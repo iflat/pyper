@@ -46,7 +46,7 @@
 
 
 <p>其中 xxxx 是你的 GitHub 帐号，yyyy 为新建的仓库的名称。在仓库里添加一个 index.html 试试，看能不能访问到。</p>
-<p>如果你想将已有的域名指向这个博客，同样先在仓库设置中将 Custom domain 项设置为你的域名，比如 www.xxxx.com ，并保存。然后去你的域名注册商那里将域名解析添加一个CNAME解析，指向 xxxx.github.io ，其中 xxxx 还是你的 GitHub 帐号，注意这里传递给了主机 github.io，而不是 github.com ，GitHub 使用了专门的主机来完成解析工作。一般这个CNAME解析需要2项，一个 www 记录，一个@记录。设置完成后，大约过那么几分钟，服务器就会把你的设置结果推送出去，这时就可以使用自己的域名访问博客了。</p>
+<p>如果你想将已有的域名指向这个博客，必须先在仓库设置中将 Custom domain 项设置为你的域名，比如 www.xxxx.com ，并保存。然后去你的域名注册商那里将域名解析添加一个CNAME解析，指向 xxxx.github.io ，其中 xxxx 还是你的 GitHub 帐号，注意这里传递给了主机 github.io，而不是 github.com ，GitHub 使用了专门的主机来完成解析工作。一般这个CNAME解析需要2项，一个 www 记录，一个@记录。设置完成后，大约过那么几分钟，服务器就会把你的设置结果推送出去，这时就可以使用自己的域名访问博客了。</p>
 <p>然后就该 Pelican 上场了，它的老家在: <a href="https://blog.getpelican.com/">https://blog.getpelican.com/</a> 。<br>
   它的网站上有详细的安装和使用说明。其实安装很简单：</p>
 <div class="highlight"><pre><span></span>pip install pelican
