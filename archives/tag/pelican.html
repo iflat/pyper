@@ -23,7 +23,107 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/python/2017/08/03/">GitHub上开博客</a></h1>
+                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/python/2017/08/06/">Pelican配置文件详解</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-08-06T16:50:00+08:00">
+                发布于: 2017-08-06 16:50
+        </abbr>
+
+        <address class="vcard author">
+                作者:                         <a class="url fn" href="http://www.pyper.cn/archives/author/iflat.html">Iflat</a>
+        </address>
+<p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
+<p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> </p>
+</footer><!-- /.post-info --><h1>Pelican简介</h1>
+<p>Pelican 是一个使用 Python 语言编写的静态网页生成工具，它可以根据 markdown 文件的内容，自动生成结构化的网页。</p>
+<p>Pelican具有以下特点：</p>
+<ul>
+<li>原始内容可以是 reStructuredText, Markdown 或 AsciiDoc</li>
+<li>完全生成静态网页以方便发布，不需要数据库和服务器端后台逻辑的支持</li>
+<li>使用Jinja 模板库，可任意定制模板和主题</li>
+<li>支持多语种发布</li>
+<li>支持 Atom/RSS 订阅</li>
+<li>支持语法高亮</li>
+<li>可以从WordPress, Dotclear, RSS订阅或其它地方导入文章</li>
+<li>支持插件</li>
+</ul>
+<p>安装和使用非常简单，可参考我的前一篇文章<a href="http://www.pyper.cn/posts/python/2017/08/03/">GitHub上建博客</a> 。</p>
+<h1>Pelican的工作机制</h1>
+<p>Pelican 生成网页要处理的原材料是 contend/ 下的 markdown 文件。它把这些文件分成两类对待：一种是随时间不断添加或修改的博客文章；另一种是一旦创建完成后就不太会经常做更改的页面。以下分别用文章和页面代指这两个概念。</p>
+<p>无论是文章还是页面，它们从原始内容上来说，是没有区分的。以 markdown 格式的文件为例，在Pelican 中的markdown文件通常是这种样子的。这有一个简单的模版：</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="kd">super</span> <span class="n">title</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">Modified</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">publishing</span>
+<span class="n">Slug</span><span class="o">:</span> <span class="n">my</span><span class="o">-</span><span class="kd">super</span><span class="o">-</span><span class="n">post</span>
+<span class="n">Authors</span><span class="o">:</span> <span class="n">Alexis</span> <span class="n">Metaireau</span><span class="o">,</span> <span class="n">Conan</span> <span class="n">Doyle</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="n">Short</span> <span class="n">version</span> <span class="k">for</span> <span class="n">index</span> <span class="n">and</span> <span class="n">feeds</span>
+
+<span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="kd">super</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+</pre></div>
+
+
+<p>从字面上来看，分别定义了标题、创建时间、修改时间、所属分类、标签、文章标注词、作者、摘要，最后一句话是文章正文内容。</p>
+<p>当Pelican 对这个文件进行处理时，这里的每一个定义都会变成重要的变量进行处理。Pelican 会依据标题命名生成的网页文件，会依据时间变量把生成的网页放到指定路径中，例如，把这个网页放到：</p>
+<div class="highlight"><pre><span></span>/2010/12/05/my-super-post.html
+</pre></div>
+
+
+<p>或是依据某些变量执行对文章和页面进行分类、建立超链接等工作。</p>
+<p>所有这些定义除了标题是必选项以外，其它都是可选的。假如没有指定创建时间，Pelican 会使用文件本身的创建时间来代替时间变量；假如没有指定分类，Pelican 会判断文件放置在那个目录来对其进行分类；假如没有指定摘要，Pelican会在正文内容开始部分截取一定长度的文字作为摘要，以此类推。</p>
+<blockquote>
+<p>Pelican 还允许你自定义变量，可以在主配置文件中的FILENAME_METADATA字段中自行添加</p>
+</blockquote>
+<p>如果你在 contend/ 中创建了 pages/ 子目录，那么所有放到 pages/中的内容将被生成为之前所说的<strong>页面</strong>。</p>
+<p>了解了以上内容之后，你就可以在 content/ 中开始工作了。你可以选择自己喜欢的 markdown 编辑器来创建文章或页面，当然如果你对 markdown 还不太熟悉，可以在网上搜索相关资料，或是翻一下我写过的一篇相关文章<a href="http://www.pyper.cn/posts/python/2011/08/04/">二十分钟学习Markdown</a>，需要提示的是一定要按照刚才介绍的模版来创建你的文章，至少你要在文章的最开始定义Title。</p>
+<p>写完几篇文章之后，你的工作目录可能会变成以下的样子：</p>
+<div class="highlight"><pre><span></span>myblog/
+├── content
+│   ├── article1.md
+│   ├── article2.md
+│   └── pages
+│       └── about.md
+├── pelicanconf.py
+└...
+</pre></div>
+
+
+<p>现在可以使用Pelican 命令来生成你的博客网站了，执行：</p>
+<div class="highlight"><pre><span></span>pelican content/
+</pre></div>
+
+
+<p>程序执行完成之后，Pelican 会在命令行返回这次生成了几篇文章，几个页面，用了多少时间等。</p>
+<p>这时再<code>cd output/</code>，你就可以<code>ls</code>查看它到底生成了些什么东西。一般形如以下内容：</p>
+<div class="highlight"><pre><span></span>output/
+    ├──about-me.html
+    ├──archives.html
+    ├──authors.html
+    ├──author
+    │   └──...
+    ├──category
+    │   └──...
+    ├── index.html
+    ├── my-first-article.html
+    └── test-post.html
+</pre></div>
+
+
+<p>首先你会发现，生成的文章和页面是按照你在 contend/ 中文章的标题来命名的，例如： my-first-article ；test-post等。不幸的是，如果你的文章标题是汉语，将会产生奇怪的汉语拼音命名方式。并且你还会发现，如果你指定了分类，Pelican 将产生一个 category/ 目录，里边有以你的分类名称命名的 .html 文件。同样的情形，如果你的分类名称也是汉语的，将发现很多名称奇特的东西。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h2>其它文章</h2>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.pyper.cn/posts/python/2017/08/03/" rel="bookmark"
+                           title="链接到 GitHub上建博客">GitHub上建博客</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-08-03T10:20:00+08:00">
                 发布于: 2017-08-03 10:20
@@ -34,71 +134,12 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
 <p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> <a href="http://www.pyper.cn/archives/tag/github.html">github</a> </p>
-</footer><!-- /.post-info --><p>Github 提供了在网上发布静态网页的能力，这也促使了静态网页生成工具的迅速发展。如果你使用的是 Python，那么最好的选择就是 Pelican，这是一个法国人的开源项目，主要基于 Jinja 文档模板库来自动生成静态网页。</p>
-<p>了解了工具后，第一个步骤就是在你的 Github 中为你的博客单独建一个仓库，打开这个新建的仓库，并在其设置中将 GitHub Pages 的 Source 项选择为 <code>master branch</code>，这样你就可以使用 git 工具随时来管理你的博客了。这时你就拥有一个 GitHub 博客了，其地址为：</p>
-<div class="highlight"><pre><span></span>http://github.com/xxxx/yyyy/
-</pre></div>
-
-
-<p>其中 xxxx 是你的 GitHub 帐号，yyyy 为新建的仓库的名称。在仓库里添加一个 index.html ，试试看能不能访问到。</p>
-<p>如果你想将已有的域名指向这个博客，必须先在仓库设置中将 Custom domain 项设置为你的域名，比如 www.xxxx.com ，并保存。然后去你的域名注册商那里将域名解析添加一个CNAME解析，来指向 xxxx.github.io ，其中 xxxx 还是你的 GitHub 帐号，注意这里传递给了主机 github.io，而不是 github.com ，GitHub 使用了专门的主机来完成解析工作。一般这个CNAME解析需要添加2项，一个 www 记录，一个@记录。设置完成后，大约过那么几分钟，服务器就会把你的设置结果推送出去，这时就可以使用自己的域名访问博客了。</p>
-<p>然后就该 Pelican 上场了，它的老家在: <a href="https://blog.getpelican.com/">https://blog.getpelican.com/</a> 。<br>
-  它的网站上有详细的安装和使用说明。其实安装很简单：</p>
-<div class="highlight"><pre><span></span>pip install pelican
-</pre></div>
-
-
-<p>一般情况下 pip 会把依赖库一块安装好，如果你不确定的话，最好把 markdown 这个库也安装一下：</p>
-<div class="highlight"><pre><span></span>pip install markdown
-</pre></div>
-
-
-<p>安装完成后，为你的博客准备一个本地目录，比如： <code>mkdir myblog</code> 然后 <code>cd myblog</code> ，进入目录中执行：</p>
-<div class="highlight"><pre><span></span>pelican-quickstart
-</pre></div>
-
-
-<p>这个东西会完成初始化博客的工作，同时执行过程中它会问你很多问题，比如：博客名称是什么？你的名字是什么？准备把博客放哪儿？域名是什么？等等。</p>
-<p>问完之后，你可以 <code>ls</code> 查看一下当前目录里边多出了那些东西？
-  通常内容是这样的：</p>
-<div class="highlight"><pre><span></span>myblog/
-├── content
-│   └── (pages)
-├── output
-├── develop_server.sh
-├── fabfile.py
-├── Makefile
-├── pelicanconf.py       # Main settings file
-└── publishconf.py       # Settings to use when ready to publish
-</pre></div>
-
-
-<p>其中 content/ 中存放你要写的博客文章，当然这些文件通常不是.html格式的，而是 markdown 格式或 reStructuredText 格式的文件，Pelican 会使用这些文件自动生成静态的网页。现在里边什么也没有</p>
-<p>output/ 是生成的网页文件要存放的目录，同样现在它里边也什么也没有。</p>
-<p>另外的5个文件，是你刚才执行 <code>pelican-quickstart</code> 时产生的配置和工具，fabfile.py 和Makefile 用来简化 Pelican 操作，目前用不着，甚至你可以不用它们而把它们删除了也没有任何关系。</p>
-<p>pelicanconf.py 和 publishconf.py 是2个 Python 源码格式的配置文件，从名称可以看出前者是主配置文件，后者是跟发布相关的配置文件(它暂时也用不着)。</p>
-<p>所以现在最主要的东西就是2个空目录和1个配置文件。是时候为你的博客添加点内容了，在 content/ 中创建一个 markdown 格式的文件：foobar.dm，其内容如下：</p>
-<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Review</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Review</span>
-<span class="n">Following</span> <span class="k">is</span> <span class="n">a</span> <span class="n">review</span> <span class="n">of</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">mechanical</span> <span class="n">keyboard</span><span class="o">.</span>
-</pre></div>
-
-
-<p>这个文件有4行内容：第一行是文章标题；第二行是创建时间；第三行是文章的分类；最后一行是文章的内容。</p>
-<p>现在万事俱备了，执行 Pelican 命令：</p>
-<div class="highlight"><pre><span></span>pelican content/
-</pre></div>
-
-
-<p>它将把刚才保存到 content/ 中的 foobar.md 文件生成为网页并把完整的博客网站结构生成到 output/ 中。</p>
-<p>如果你想预览一下这个博客，接着执行：</p>
-<div class="highlight"><pre><span></span>python -m pelican.server
-</pre></div>
-
-
-<p>这样你就可以在浏览器中打开<a href="http://localhost:8000/">http://localhost:8000/</a>，来看看这个新生的博客长什么样了。</p>                </article>
-            </aside><!-- /#featured -->
+</footer><!-- /.post-info -->                <p>利用Github Pages发布博客的操作步骤</p>
+                <a class="readmore" href="http://www.pyper.cn/posts/python/2017/08/03/">详细内容...</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>相关链接</h2>
