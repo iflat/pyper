@@ -23,31 +23,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/python/2017/08/04/">使用Pip管理Python模块</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2017-08-04T16:20:00+08:00">
-                发布于: 2017-08-04 16:20
-        </abbr>
-
-        <address class="vcard author">
-                作者:                         <a class="url fn" href="http://www.pyper.cn/archives/author/iflat.html">iflat</a>
-        </address>
-<p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
-
-</footer><!-- /.post-info --><p>简单记录一下在github上设置博客的步骤.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h2>其它文章</h2>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.pyper.cn/posts/python/2017/08/03/" rel="bookmark"
-                           title="链接到 GitHub上开博客">GitHub上开博客</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/python/2017/08/03/">GitHub上开博客</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2017-08-03T10:20:00+08:00">
                 发布于: 2017-08-03 10:20
@@ -58,8 +34,95 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
 <p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> <a href="http://www.pyper.cn/archives/tag/github.html">github</a> </p>
-</footer><!-- /.post-info -->                <p>利用Github Pages发布博客的操作步骤</p>
-                <a class="readmore" href="http://www.pyper.cn/posts/python/2017/08/03/">详细内容...</a>
+</footer><!-- /.post-info --><p>Github 提供了在网上发布静态网页的能力，这也促使了静态网页生成工具的红火发展。如果你使用的是 Python，那么最好的选择就是 Pelican，这是一个法国人的开源项目，主要基于 Jinja 文档模板库来自动生成静态网页。</p>
+<p>了解了工具后，第一个步骤就是在你的 Github 中为你的博客单独建一个仓库，打开这个新建的仓库，并在其设置中将 GitHub Pages 的 Source 项选择为 <code>master branch</code>，这样你就可以使用 git 工具随时来管理你的博客了。这样你就拥有一个 GitHub 博客了，其地址为：</p>
+<div class="highlight"><pre><span></span>http://github.com/xxxx/yyyy/
+</pre></div>
+
+
+<p>其中 xxxx 是你的 GitHub 帐号，yyyy 为新建的仓库的名称。在仓库里添加一个 index.html 试试，看能不能访问到。</p>
+<p>如果你想将已有的域名指向这个博客，必须先在仓库设置中将 Custom domain 项设置为你的域名，比如 www.xxxx.com ，并保存。然后去你的域名注册商那里将域名解析添加一个CNAME解析，指向 xxxx.github.io ，其中 xxxx 还是你的 GitHub 帐号，注意这里传递给了主机 github.io，而不是 github.com ，GitHub 使用了专门的主机来完成解析工作。一般这个CNAME解析需要2项，一个 www 记录，一个@记录。设置完成后，大约过那么几分钟，服务器就会把你的设置结果推送出去，这时就可以使用自己的域名访问博客了。</p>
+<p>然后就该 Pelican 上场了，它的老家在: <a href="https://blog.getpelican.com/">https://blog.getpelican.com/</a> 。<br>
+  它的网站上有详细的安装和使用说明。其实安装很简单：</p>
+<div class="highlight"><pre><span></span>pip install pelican
+</pre></div>
+
+
+<p>一般情况下 pip 会把依赖库一块安装好，如果你不确定的话，最好把 markdown 这个库也安装一下：</p>
+<div class="highlight"><pre><span></span>pip install markdown
+</pre></div>
+
+
+<p>安装完成后，为你的博客准备一个本地目录，比如： <code>mkdir myblog</code> 然后 <code>cd myblog</code> ，进入目录中执行：</p>
+<div class="highlight"><pre><span></span>pelican-quickstart
+</pre></div>
+
+
+<p>这个东西会完成初始化博客的工作，同时执行过程中它会问你很多问题，比如：博客名称是什么？你的名字是什么？准备把博客放哪儿？域名是什么？等等。</p>
+<p>问完之后，你可以 <code>ls</code> 查看一下当前目录里边多出了那么东西？
+  通常内容是这样的：</p>
+<div class="highlight"><pre><span></span>myblog/
+├── content
+│   └── (pages)
+├── output
+├── develop_server.sh
+├── fabfile.py
+├── Makefile
+├── pelicanconf.py       # Main settings file
+└── publishconf.py       # Settings to use when ready to publish
+</pre></div>
+
+
+<p>其中 content/ 中存放你要写的博客文章，当然这些文件通常不是.html格式的，而是 markdown 格式或 reStructuredText 格式的文件，Pelican 会使用这些文件自动生成静态的网页。现在里边什么也没有</p>
+<p>output/ 是生成的网页文件要存放的目录，同样现在它里边也什么也没有。</p>
+<p>另外的5个文件，是你刚才执行 <code>pelican-quickstart</code> 时产生的配置和工具，fabfile.py 和Makefile 用来简化 Pelican 操作，目前用不着，甚至你可以不用它们而把它们删除了也没有任何关系。</p>
+<p>pelicanconf.py 和 publishconf.py 是2个 Python 源码格式的配置文件，从名称可以看出前者是主要配置文件，后者是跟发布相关的配置文件(它暂时也用不着)。</p>
+<p>所以现在最主要的东西就是2个空目录和1个配置文件。现在 content/ 中创建一个 markdown 格式的文件：foobar.dm，其内容如下：</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Review</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Review</span>
+<span class="n">Following</span> <span class="k">is</span> <span class="n">a</span> <span class="n">review</span> <span class="n">of</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">mechanical</span> <span class="n">keyboard</span><span class="o">.</span>
+</pre></div>
+
+
+<p>这个文件有4行内容：第一行是文章标题；第二行是创建时间；第三行是文章的分类；最后一行是文章的内容。</p>
+<p>现在万事俱备了，执行 Pelican 命令：</p>
+<div class="highlight"><pre><span></span>pelican content/
+</pre></div>
+
+
+<p>它将把刚才保存到 content/ 中的 foobar.md 文件生成为网页并把完整的博客网站结构生成到 output/ 中。</p>
+<p>如果你想预览一下这个博客，接着执行：</p>
+<div class="highlight"><pre><span></span>python -m pelican.server
+</pre></div>
+
+
+<p>这样你就可以在浏览器中打开<a href="http://localhost:8000/">http://localhost:8000/</a>，来看看这个新生的博客长什么样了。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h2>其它文章</h2>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.pyper.cn/posts/python/2012/08/09/" rel="bookmark"
+                           title="链接到 使用Pip管理Python模块">使用Pip管理Python模块</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-09T13:20:00+08:00">
+                发布于: 2012-08-09 13:20
+        </abbr>
+
+        <address class="vcard author">
+                作者:                         <a class="url fn" href="http://www.pyper.cn/archives/author/iflat.html">iflat</a>
+        </address>
+<p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
+
+</footer><!-- /.post-info -->                <p>Python使用Pip来管理所有第三方模块和库.</p>
+                <a class="readmore" href="http://www.pyper.cn/posts/python/2012/08/09/">详细内容...</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
@@ -90,18 +153,18 @@
                 <div class="blogroll">
                         <h2>相关链接</h2>
                         <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://python.org/">Python</a></li>
+                            <li><a href="https://software.opensuse.org/">OpenSuse官网</a></li>
                             <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="#">预留位置</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
                         <h2>友情链接</h2>
                         <ul>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="#">期待互换友链</a></li>
+                            <li><a href="#">为你预留座位</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
