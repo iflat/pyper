@@ -39,14 +39,14 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
 <p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> <a href="http://www.pyper.cn/archives/tag/github.html">github</a> </p>
-</footer><!-- /.post-info -->      <p>Github 提供了在网上发布静态网页的能力，这也促使了静态网页生成工具的红火发展。如果你使用的是 Python，那么最好的选择就是 Pelican，这是一个法国人的开源项目，主要基于 Jinja 文档模板库来自动生成静态网页。</p>
-<p>了解了工具后，第一个步骤就是在你的 Github 中为你的博客单独建一个仓库，打开这个新建的仓库，并在其设置中将 GitHub Pages 的 Source 项选择为 <code>master branch</code>，这样你就可以使用 git 工具随时来管理你的博客了。这样你就拥有一个 GitHub 博客了，其地址为：</p>
+</footer><!-- /.post-info -->      <p>Github 提供了在网上发布静态网页的能力，这也促使了静态网页生成工具的迅速发展。如果你使用的是 Python，那么最好的选择就是 Pelican，这是一个法国人的开源项目，主要基于 Jinja 文档模板库来自动生成静态网页。</p>
+<p>了解了工具后，第一个步骤就是在你的 Github 中为你的博客单独建一个仓库，打开这个新建的仓库，并在其设置中将 GitHub Pages 的 Source 项选择为 <code>master branch</code>，这样你就可以使用 git 工具随时来管理你的博客了。这时你就拥有一个 GitHub 博客了，其地址为：</p>
 <div class="highlight"><pre><span></span>http://github.com/xxxx/yyyy/
 </pre></div>
 
 
-<p>其中 xxxx 是你的 GitHub 帐号，yyyy 为新建的仓库的名称。在仓库里添加一个 index.html 试试，看能不能访问到。</p>
-<p>如果你想将已有的域名指向这个博客，必须先在仓库设置中将 Custom domain 项设置为你的域名，比如 www.xxxx.com ，并保存。然后去你的域名注册商那里将域名解析添加一个CNAME解析，指向 xxxx.github.io ，其中 xxxx 还是你的 GitHub 帐号，注意这里传递给了主机 github.io，而不是 github.com ，GitHub 使用了专门的主机来完成解析工作。一般这个CNAME解析需要2项，一个 www 记录，一个@记录。设置完成后，大约过那么几分钟，服务器就会把你的设置结果推送出去，这时就可以使用自己的域名访问博客了。</p>
+<p>其中 xxxx 是你的 GitHub 帐号，yyyy 为新建的仓库的名称。在仓库里添加一个 index.html ，试试看能不能访问到。</p>
+<p>如果你想将已有的域名指向这个博客，必须先在仓库设置中将 Custom domain 项设置为你的域名，比如 www.xxxx.com ，并保存。然后去你的域名注册商那里将域名解析添加一个CNAME解析，来指向 xxxx.github.io ，其中 xxxx 还是你的 GitHub 帐号，注意这里传递给了主机 github.io，而不是 github.com ，GitHub 使用了专门的主机来完成解析工作。一般这个CNAME解析需要添加2项，一个 www 记录，一个@记录。设置完成后，大约过那么几分钟，服务器就会把你的设置结果推送出去，这时就可以使用自己的域名访问博客了。</p>
 <p>然后就该 Pelican 上场了，它的老家在: <a href="https://blog.getpelican.com/">https://blog.getpelican.com/</a> 。<br>
   它的网站上有详细的安装和使用说明。其实安装很简单：</p>
 <div class="highlight"><pre><span></span>pip install pelican
@@ -64,7 +64,7 @@
 
 
 <p>这个东西会完成初始化博客的工作，同时执行过程中它会问你很多问题，比如：博客名称是什么？你的名字是什么？准备把博客放哪儿？域名是什么？等等。</p>
-<p>问完之后，你可以 <code>ls</code> 查看一下当前目录里边多出了那么东西？
+<p>问完之后，你可以 <code>ls</code> 查看一下当前目录里边多出了那些东西？
   通常内容是这样的：</p>
 <div class="highlight"><pre><span></span>myblog/
 ├── content
@@ -81,8 +81,8 @@
 <p>其中 content/ 中存放你要写的博客文章，当然这些文件通常不是.html格式的，而是 markdown 格式或 reStructuredText 格式的文件，Pelican 会使用这些文件自动生成静态的网页。现在里边什么也没有</p>
 <p>output/ 是生成的网页文件要存放的目录，同样现在它里边也什么也没有。</p>
 <p>另外的5个文件，是你刚才执行 <code>pelican-quickstart</code> 时产生的配置和工具，fabfile.py 和Makefile 用来简化 Pelican 操作，目前用不着，甚至你可以不用它们而把它们删除了也没有任何关系。</p>
-<p>pelicanconf.py 和 publishconf.py 是2个 Python 源码格式的配置文件，从名称可以看出前者是主要配置文件，后者是跟发布相关的配置文件(它暂时也用不着)。</p>
-<p>所以现在最主要的东西就是2个空目录和1个配置文件。现在 content/ 中创建一个 markdown 格式的文件：foobar.dm，其内容如下：</p>
+<p>pelicanconf.py 和 publishconf.py 是2个 Python 源码格式的配置文件，从名称可以看出前者是主配置文件，后者是跟发布相关的配置文件(它暂时也用不着)。</p>
+<p>所以现在最主要的东西就是2个空目录和1个配置文件。是时候为你的博客添加点内容了，在 content/ 中创建一个 markdown 格式的文件：foobar.dm，其内容如下：</p>
 <div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Review</span>
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
 <span class="n">Category</span><span class="o">:</span> <span class="n">Review</span>
