@@ -39,44 +39,70 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
 
-</footer><!-- /.post-info -->      <p>Markdown是一种简单的格式规范，它可以非常简单的被工具转换为网页的标签，使用 markdown 能在做文字编辑时将精力集中到文章的内容上，而不是复杂的格式语法上。</p>
-<h1>这里是标题，通常被认为是H1标签</h1>
-<h2>2个井号就是二级标题</h2>
+</footer><!-- /.post-info -->      <p>Markdown 是一种简单的格式语法，它可以非常简单的被工具转换为网页的标记，使用 markdown 能在做文字编辑时将精力集中到文章的内容上，而不是复杂的格式语法上。它的设计哲学就是尽最大可能地方便读、方便写。</p>
+<p>&nbsp;</p>
+<h2>一、标题的定义</h2>
+<p>标题定义有两种方法，前缀#号或在标题下加下划线行，形式如下：</p>
+<p>#这里是标题</p>
+<p>我也是标题 或者 我还是标题</p>
+<p>======== &nbsp; &nbsp; ——————————</p>
+<h1>前缀1个井号是最大的标题，通常被认为是H1标签</h1>
+<h2>前缀2个井号就是二级标题</h2>
 <h3>3个井号是三级标题</h3>
 <h4>四级标题</h4>
 <h5>五级标题</h5>
-<h6>六级，有时候不被某些工具支持</h6>
-<h1>这也是一种标题，其下一行使用了=</h1>
-<h2>如果下一行使用了--，那就是H2了</h2>
-<p>标题是自成一段的，但如果不是标题，使用简单的换行键，不会换行。只有2段文字中间有空行时，才标明这是一个新的段落。
-我和上边还是在一个段落里。</p>
-<p>我才是另起一段。</p>
+<h6>六级</h6>
+<h1>这也是一种标题，我的下一行使用了很多==号</h1>
+<h2>我的下一行使用了很多--号，那就是H2了</h2>
+<p>&nbsp;</p>
+<h2>二、段落的定义</h2>
+<p>标题是自成一段的，但如果不是标题，使用简单的换行键，markdown 不会产生划分段落的效果。只有2段文字中间有空行时，才标明这是一个新的段落。比如下边这句话，它还是跟我这一段属于同一段落。
+“是的，我和上边还是在一个段落里。”</p>
+<p>“我才是另起一段。”</p>
+<p>如果想在markdown里使用换行效果，简单的方法是在这一行后边敲入2个以上空格，再加一个回车键，这会产生换行。<br>
+我是一个新行，注意到了吗？我比段落间距小一点。</p>
+<p>还有一种段落叫引用段落，它比正常段落多了一些缩进。引用段落使用>号来产生。</p>
 <blockquote>
-<p>以>打头的被认为是一种引用，通常以缩进的方式展示。
-如果每一行都必须加>号，或许有点麻烦，那么你可以只在一个段落的开始使用。那么整个段落都是引用格式的。</p>
-<h3>引用里可以使用其它标记，比如我是一个标题</h3>
+<p>以>打头的被认为是一种引用，通常以缩进的方式展示。你可以在每一行前加>号来将一段文字设为引用段落。
+如果每一行都必须加>号，或许有点麻烦，还有一种比较懒的方法是你可以只在一个段落的开始使用>。那么整个段落都是引用格式的，比如我。</p>
+<h3>引用里可以嵌套其它markdown标记，比如我是引用段落里的一个标题</h3>
 <blockquote>
-<p>我是引用里的引用，又缩进了一步
+<p>我是引用里的引用，又缩进了一步。
 我是什么，因为没有空行，所以我还是跟上一句是一个段落里的。</p>
 <blockquote>
-<p>多级的引用是允许的。
+<p>多级嵌套的引用也是允许的。
 </p>
 </blockquote>
 </blockquote>
 </blockquote>
+<p>&nbsp;</p>
+<h2>三、列表的定义</h2>
 <p>如果行前有前缀*，-，+，表示这是一个无序列表，例如：</p>
+<p>* 我是第一行</p>
+<p>* 我是第二行</p>
+<p>* 我是第三行</p>
+<p>将产生以下列表</p>
 <ul>
 <li>我是第一行</li>
 <li>我是第二行</li>
 <li>我是第三行</li>
 </ul>
 <p>或者</p>
+<p>- 我是第一行</p>
+<p>- 我是第二行</p>
+<p>- 我是第三行<br>
+将产生同样的一个列表</p>
 <ul>
 <li>我是第一行</li>
 <li>我是第二行</li>
 <li>我是第三行</li>
 </ul>
-<p>或者，要注意的是，文字和符号间要有一个空格。</p>
+<p>需要注意的是，<strong>文字和前缀符号间要有一个空格。</strong><br>
+使用+号的演示：</p>
+<p>+ 我是第一行</p>
+<p>+ 我是第二行</p>
+<p>+ 我是第三行<br>
+还是产生同样的一个无序列表</p>
 <ul>
 <li>我是第一行</li>
 <li>我是第二行</li>
@@ -88,29 +114,40 @@
 <li>我是第二行</li>
 <li>我是第三行</li>
 </ol>
-<p>要注意的是，数字和文字间要有句点。</p>
+<p>要注意的是，<strong>数字后必须要有句点，和文字间必须再加空格。</strong></p>
+<p>其实数字的值在这里没有意义，比如可以这样：</p>
+<p>8. 我是第一行</p>
+<p>2. 我是第二行</p>
+<p>17. 我是第三行<br>
+依然将产生从1开始编号的有序列表：</p>
+<ol>
+<li>我是第一行</li>
+<li>我是第二行</li>
+<li>我是第三行</li>
+</ol>
 <p>列表标签可以产生段列表，中间可以添加空行，例如：</p>
 <ul>
 <li>
 <p>整个这个段落都是列表，而不管这一段包含了多少文字，是否有换行<br>
 它总是以列表的形式出现。</p>
-<p>我属于上一个列表，只要我跟上一个列表有相同的缩进。</p>
+<p>我属于上一个列表，只要我跟上一个段落有相同的缩进。</p>
 </li>
 <li>
-<p>这是段列表的第二段内容。</p>
+<p>这是段列表的第二项内容。</p>
 </li>
 </ul>
-<p>列表和引用一样，可以有嵌套的内容：</p>
+<p>列表和引用一样，可以有嵌套的markdown内容：</p>
 <ul>
 <li>
 <h2>列表里的标题</h2>
-</li>
-<li>
 <blockquote>
+<p>列表里的引用</p>
 <p>列表里的引用</p>
 </blockquote>
 </li>
-<li>无序列表里的代码<div class="highlight"><pre><span></span>    第一行
+<li>
+<p>无序列表里的代码</p>
+<div class="highlight"><pre><span></span>    第一行
     第二行
     第三行
 </pre></div>
@@ -119,9 +156,19 @@
 </li>
 </ul>
 <p>为了阻止数字加句点被作为列表，可使用\来转义句点：</p>
+<p>1996\. 年 
+1997\. 年<br>
+就不会被当作列表来呈现了，而显示为：</p>
 <p>1996. 年 
 1997. 年</p>
+<h2>四、代码的定义</h2>
 <p>正如刚才看到的，行前使用至少4个空格或1个Tab的缩进，可以产生代码格式：</p>
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+        <span class="ni">&amp;copy;</span> 2004 Foo Corporation
+    <span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
 <div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
     <span class="ni">&amp;copy;</span> 2004 Foo Corporation
 <span class="nt">&lt;/div&gt;</span>
@@ -129,36 +176,100 @@
 
 
 <p>或者：</p>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+
+
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 
 
+<p>如果想呈现代码内的缩进，请在需要缩进的代码前使用双倍到多倍的空格和Tab，例如一次使用8个空格或2个Tab .</p>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+
+
+<p>将生成为：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>五、水平横条</h2>
 <p>3个以上的*号或-号，定义一个水平横条。</p>
+<p>例如：
+***<br>
+或----</p>
+<p>将呈现水平横条：</p>
 <hr>
-<p>或者是：</p>
+<p>或：</p>
 <hr>
-<p>当然使用--时中间要空出一行，不然就是标题的定义了。</p>
-<p>方括号[]在markdown中定义链接：
-<a href="https://www.baidu.com">百度</a>
-<a href="https://www.baidu.com , title=" title="baidu.com">百度</a>，这里title是提示语</p>
+<p>当然使用--号时中间要空出一行，不然就是二级标题的定义了。</p>
+<h2>六、链接的定义</h2>
+<p>在markdown中用方括号[]来定义链接：</p>
+<p>例如：</p>
+<p><code>[百度](https://www.baidu.com)</code>  </p>
+<p><code>[百度](https://www.baidu.com , 'title')</code>，这里title是提示语</p>
+<p>将产生以下形式的链接：</p>
+<p><a href="https://www.baidu.com">百度</a>
+<a href="https://www.baidu.com , title=" title="baidu.com">百度</a></p>
+<p>形如：<code>[About](/about/)</code>的格式，将产生一个到本地的链接：  </p>
 <p><a href="/about/">About</a>定义的是页内链接</p>
-<p><a href="http://www.pyper.cn/" title="Optional Title Here">pyper.cn</a>定义的是参考链接</p>
+<p>形如：<code>[pyper.cn][1]</code>定义的是参考链接</p>
+<p><a href="http://www.pyper.cn/" title="可选的说明文字在这里">pyper.cn</a></p>
 <p>这样就可以转到
-    <a href="http://www.pyper.cn/" title="Optional Title Here">1</a>: http://www.pyper.cn/  "可选的描述"</p>
+    <a href="http://www.pyper.cn/" title="可选的说明文字在这里">1</a>: http://www.pyper.cn/  "可选的说明文字在这里"</p>
+<p>&nbsp;</p>
+<p>如果文字内容直接就是一个可用的URL ,可以使用&lt;xxxx>来直接定义一个链接：  </p>
+<p><code>&lt;http://www.pyper.cn/&gt;</code>  </p>
 <p>用尖括号<a href="http://www.pyper.cn/">http://www.pyper.cn/</a> 定义链接具有同样的效果。</p>
-<p>同html一样的&copy;版权标志</p>
+<p>&nbsp;</p>
+<h2>七、强调内容的定义</h2>
 <p>使用1个*或一个_号包围的文字间，产生这种效果：</p>
+<p><code>*我是一段斜体字*</code></p>
+<p><code>_我也是斜体字_</code></p>
+<p>会显示为：</p>
 <p><em>我是一段斜体字</em></p>
 <p><em>我也是斜体字</em></p>
-<p>使用2个*号或 _ _ 包围的文字，是这种效果：</p>
+<p>&nbsp;</p>
+<p>如果使用的是2个*号或 _ _ 包围的文字：</p>
+<p><code>**我是加粗字体，这是被2个星号包围的一段内容。**</code>  </p>
+<p><code>__好像我也是__</code><br>
+是这种效果：</p>
 <p><strong>我是加粗字体，这是被2个星号包围的一段内容。</strong></p>
 <p><strong>好像我也是</strong></p>
-<p>符号` mkdir test ` 之间的文字是行内代码</p>
+<p>&nbsp;</p>
+<p>符号`mkdir test`之间的文字是行内代码，行内代码将其包围的内容以原始的样子显现出来，这常常用来呈现行内代码。如果内容本身包含了某些markdown定义的符号，可以使用2个``来将其强调。</p>
+<p>`` `2个反引号之间的文字，都被定义为代码` ``</p>
 <p><code>`2个反引号之间的文字，都被定义为代码`</code></p>
-<p>最后看一下添加图片：</p>
-<p>![图片](https://www.baidu.com/img/bd_logo1.png title='百度图片')</p>
+<p>&nbsp;</p>
+<h2>八、图片的定义</h2>
+<p>最后看一下如何在文档内添加图片，图片的定义跟链接非常类似，只不过在方括号前再加上一个感叹号'!'。</p>
+<p>![百度logo](https://www.baidu.com/img/bd_logo1.png  “百度图片”)</p>
+<p><img alt="百度logo" src="https://www.baidu.com/img/bd_logo1.png"></p>
+<p>图片定义也可以使用锚点的形式，将需要添加的图片集中放到一块处理。</p>
+<h2>九、其它定义</h2>
+<p>同html一样的<code>&amp;copy;</code>版权标志&copy; ；<code>&amp;nbsp;</code>是一个空格，&nbsp;能看到我吗？</p>
+<p>使用\来完成特定符号的转义：</p>
+<p>\* 来显示*<br>
+\\ 来显示\本身<br>
+<code>``   反引号</code> `<br>
+\_   下划线_<br>
+\{\}  花括号{}<br>
+\[\]  方括号[]<br>
+\(\)  小括号()<br>
+\#   井号#<br>
+\+   加号+<br>
+\-   减号-<br>
+\.   句点.<br>
+\!   感叹号!  </p>
     </div><!-- /.entry-content -->
 
   </article>
