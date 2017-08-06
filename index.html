@@ -65,7 +65,7 @@
 
 
 <p>从字面上来看，分别定义了标题、创建时间、修改时间、所属分类、标签、文章标注词、作者、摘要，最后一句话是文章正文内容。</p>
-<p>当Pelican 对这个文件进行处理时，这里的每一个定义都会变成重要的变量进行处理。Pelican 会依据标题命名生成的网页文件，会依据时间变量把生成的网页放到指定路径中，例如，把这个网页放到：</p>
+<p>当Pelican 对这个文件进行处理时，这里的每一个定义都会变成重要的变量进行处理。通常 Pelican 会依据标题命名生成的网页文件，会依据时间变量把生成的网页放到指定路径中，例如，把这个网页放到：</p>
 <div class="highlight"><pre><span></span>/2010/12/05/my-super-post.html
 </pre></div>
 
@@ -97,20 +97,23 @@
 <p>程序执行完成之后，Pelican 会在命令行返回这次生成了几篇文章，几个页面，用了多少时间等。</p>
 <p>这时再<code>cd output/</code>，你就可以<code>ls</code>查看它到底生成了些什么东西。一般形如以下内容：</p>
 <div class="highlight"><pre><span></span>output/
-    ├──about-me.html
-    ├──archives.html
-    ├──authors.html
+    ├── archives.html
+    ├── authors.html
     ├──author
     │   └──...
     ├──category
     │   └──...
     ├── index.html
     ├── my-first-article.html
+    ├──pages
+    │   └── about-me.html
     └── test-post.html
 </pre></div>
 
 
-<p>首先你会发现，生成的文章和页面是按照你在 contend/ 中文章的标题来命名的，例如： my-first-article ；test-post等。不幸的是，如果你的文章标题是汉语，将会产生奇怪的汉语拼音命名方式。并且你还会发现，如果你指定了分类，Pelican 将产生一个 category/ 目录，里边有以你的分类名称命名的 .html 文件。同样的情形，如果你的分类名称也是汉语的，将发现很多名称奇特的东西。</p>                </article>
+<p>首先你会发现，生成的文章和页面是按照你在 contend/ 创建的文章中定义的标题来命名的，例如： my-first-article ；test-post等。不幸的是，如果你的文章标题是汉语，将会产生奇怪的汉语拼音命名方式。并且你还会发现，如果你指定了分类，Pelican 将产生一个 category/ 目录，里边有以你的分类名称命名的 .html 文件。同样的情形，如果你的分类名称也是汉语的，将发现很多名称奇特的东西。</p>
+<p>等等，刚才不是说Pelican 会根据文章中的时间将网页放到以时间命名的路径中吗？不是还会根据文章中定义的分类来将生成的网页进行分类吗？为何现在所有生成的网页都和 index.html 放在一起？</p>
+<p>是的，刚才介绍这些内容的时候是提到Pelican 能够这么做，但这都需要我们对Pelican 做进一步的设置。在默认设置下，Pelican 只会把生成的网页放至网站的根路径。</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h2>其它文章</h2>
