@@ -202,7 +202,7 @@
 <blockquote>
 <p>是否在菜单显示分类。一般情况下都需要显示吧！</p>
 </blockquote>
-<h4>DOCUTILS_SETTINGS =</h4>
+<h4>DOCUTILS_SETTINGS = { }</h4>
 <blockquote>
 <p>使用reStructuredText格式文章时的额外配置数据。请参考<a href="http://docutils.sourceforge.net/docs/user/config.html">Docutils Configuration</a></p>
 </blockquote>
@@ -210,7 +210,7 @@
 <blockquote>
 <p>是否在执行生成前删除原有输出目录。这将把原来输出目录里的所有内容清除，当输出目录里面充斥大量垃圾页面时可使用，但一定要确认你知道自己在干什么。</p>
 </blockquote>
-<h4>OUTPUT_RETENTION = []</h4>
+<h4>OUTPUT_RETENTION = [ ]</h4>
 <blockquote>
 <p>生成页面时输出目录应保留内容。该列表里指定的文件和目录在pelican执行生成工作时将不会被删除或覆盖，这一般用来保护版本控制工具的目录信息，比如Git。示例：<code>OUTPUT_RETENTION = [".hg", ".git", ".bzr"]</code></p>
 </blockquote>
@@ -218,15 +218,15 @@
 <blockquote>
 <p>传递给Jinja模板库的变量字典，用来控制Jinja的工作方式。可用参数请参考：<a href="http://jinja.pocoo.org/docs/dev/api/#jinja2.Environment">Jinja 环境变量</a></p>
 </blockquote>
-<h4>JINJA_FILTERS = {}</h4>
+<h4>JINJA_FILTERS = { }</h4>
 <blockquote>
 <p>Jinja2过滤器。详情请参考<a href="http://jinja.pocoo.org/docs/api/#custom-filters">自定义 Jinja 过滤器</a></p>
 </blockquote>
-<h4>LOG_FILTER = []</h4>
+<h4>LOG_FILTER = [ ]</h4>
 <blockquote>
 <p>日志过滤器。列表中的每个元组定义不同日志级别可忽略的日志信息。示例：<code>LOG_FILTER = [(logging.WARN, 'TAG_SAVE_AS is set to False')]</code></p>
 </blockquote>
-<h4>READERS =</h4>
+<h4>READERS = { }</h4>
 <blockquote>
 <p>自定义READER，READER是Pelican 中用来处理不同格式文档的前端处理器，通常一种格式的文档由其对应的READER处理，例如markdown和其对应的READER 。<br>
 示例：</p>
@@ -241,7 +241,7 @@
 <blockquote>
 <p>忽略文档。匹配某一列表项的 content/ 中的原始文档将不被处理。如<code>['__pycache__']</code>，将忽略所有python字节码目录。</p>
 </blockquote>
-<h4 class="..">MARKDOWN =</h4>
+<h4>MARKDOWN = {...}</h4>
 <blockquote>
 <p>使用markdown格式文章时的额外配置数据。请参考：<a href="http://pythonhosted.org/Markdown/reference.html#markdown">Markdown选项</a></p>
 </blockquote>
@@ -261,11 +261,11 @@
 <blockquote>
 <p>文章类型文档的路径。默认为空，即使用PATH指定的目录，即当前目录。</p>
 </blockquote>
-<h4>PAGE_EXCLUDES = []</h4>
+<h4>PAGE_EXCLUDES = [ ]</h4>
 <blockquote>
 <p>被排除的页面文档路径。可以在指定为文章文档类型的目录中，额外排除一个子目录，用来保存页面。</p>
 </blockquote>
-<h4>ARTICLE_EXCLUDES = []</h4>
+<h4>ARTICLE_EXCLUDES = [ ]</h4>
 <blockquote>
 <p>被排除的文章文档路径。可以在指定为页面文档类型的目录中，额外排除一个子目录，用来保存文章。</p>
 </blockquote>
@@ -277,11 +277,11 @@
 <blockquote>
 <p>设置生成器要处理的文档类型，默认只对文本格式的文档进行处理。</p>
 </blockquote>
-<h4>PLUGINS = []</h4>
+<h4>PLUGINS = [ ]</h4>
 <blockquote>
 <p>要使用的插件列表。详情查看：<a href="http://docs.getpelican.com/en/3.7.1/plugins.html#plugins">插件</a></p>
 </blockquote>
-<h4>PLUGIN_PATHS = []</h4>
+<h4>PLUGIN_PATHS = [ ]</h4>
 <blockquote>
 <p>插件路径。详情查看：<a href="http://docs.getpelican.com/en/3.7.1/plugins.html#plugins">插件</a></p>
 </blockquote>
@@ -298,7 +298,7 @@
 <blockquote>
 <p>静态文件的存放目录。一般用来存放图片，样式文件，js文件等。pelican将这样的文件直接复制到输出目录。</p>
 </blockquote>
-<h4>STATIC_EXCLUDES = []</h4>
+<h4>STATIC_EXCLUDES = [ ]</h4>
 <blockquote>
 <p>被排除的静态文件目录。</p>
 </blockquote>
@@ -310,7 +310,7 @@
 <blockquote>
 <p>是否利用Typogrify库提升HTML的生成。详情：<a href="https://pypi.python.org/pypi/typogrify">Typogrify</a></p>
 </blockquote>
-<h4>TYPOGRIFY_IGNORE_TAGS = []</h4>
+<h4>TYPOGRIFY_IGNORE_TAGS = [ ]</h4>
 <blockquote>
 <p>TYPOGRIFY库忽略的标签列表。</p>
 </blockquote>
@@ -322,11 +322,11 @@
 <blockquote>
 <p>是否允许使用将来日期，默认允许在文章中指定未来日期。如果禁用，当一篇文章指定的日期还未到来时，文章状态自动设置为 draft--草稿状态，而不会被发布。</p>
 </blockquote>
-<h4>INTRASITE_LINK_REGEX = '<a href="?P&lt;what&gt;.*?">{|</a>[|}]'</h4>
+<h4>INTRASITE_LINK_REGEX = <code>'[{|](?P&lt;what&gt;.*?)[|}]'</code></h4>
 <blockquote>
 <p>指定那些内容将被作为内部链接处理。默认是<code>{}和||</code>中的内容将被处理为内部链接。</p>
 </blockquote>
-<h4>PYGMENTS_RST_OPTIONS = []</h4>
+<h4>PYGMENTS_RST_OPTIONS = [ ]</h4>
 <blockquote>
 <p>代码块语法高亮选项。只针对reStructuredText格式文档。</p>
 </blockquote>
@@ -358,7 +358,7 @@
 <blockquote>
 <p>是否从缓存加载内容</p>
 </blockquote>
-<h4>WRITE_SELECTED = []</h4>
+<h4>WRITE_SELECTED = [ ]</h4>
 <blockquote>
 <p>指定要重新生成的文件的列表。为空，表示全部页面需要重新生成。</p>
 </blockquote>
@@ -456,31 +456,31 @@
 <blockquote>
 <p>特定作者的页面位置和命名</p>
 </blockquote>
-<h4>YEAR_ARCHIVE_SAVE_AS = ''</h4>
+<h4>YEAR_ARCHIVE_SAVE_AS = ' '</h4>
 <blockquote>
 <p>年度归档的保存位置和命名</p>
 </blockquote>
-<h4>MONTH_ARCHIVE_SAVE_AS = ''</h4>
+<h4>MONTH_ARCHIVE_SAVE_AS = ' '</h4>
 <blockquote>
 <p>月归档的保存位置和命名</p>
 </blockquote>
-<h4>DAY_ARCHIVE_SAVE_AS = ''</h4>
+<h4>DAY_ARCHIVE_SAVE_AS = ' '</h4>
 <blockquote>
 <p>日归档的保存位置和命名</p>
 </blockquote>
-<h4>SLUG_SUBSTITUTIONS = ()</h4>
+<h4>SLUG_SUBSTITUTIONS = ( )</h4>
 <blockquote>
 <p>主题词冲突替换规则</p>
 </blockquote>
-<h4>AUTHOR_SUBSTITUTIONS = ()</h4>
+<h4>AUTHOR_SUBSTITUTIONS = ( )</h4>
 <blockquote>
 <p>作者冲突替换规则</p>
 </blockquote>
-<h4>CATEGORY_SUBSTITUTIONS = ()</h4>
+<h4>CATEGORY_SUBSTITUTIONS = ( )</h4>
 <blockquote>
 <p>分类冲突替换规则</p>
 </blockquote>
-<h4>TAG_SUBSTITUTIONS = ()</h4>
+<h4>TAG_SUBSTITUTIONS = ( )</h4>
 <blockquote>
 <p>标签冲突替换规则</p>
 </blockquote>
@@ -502,6 +502,7 @@
 <p>默认首页的保存位置和命名</p>
 </blockquote>
 <p>所有URL设置变量会被模版模块处理，它们可能会自行修改和使用这里定义的变量。如果你修改了这里某个默认的变量值，例如你修改了默认首页文件的名字，可能造成模版模块处理出错。</p>
+<p><a href="http://www.pyper.cn/posts/python/2017/08/07/">未完待续...</a></p>
     </div><!-- /.entry-content -->
 
   </article>
