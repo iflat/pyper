@@ -89,6 +89,9 @@ li { margin-top: 0.5em;
 
 .pagination {
     font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }
 
 .post-info {
