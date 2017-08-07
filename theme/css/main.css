@@ -87,6 +87,10 @@ ol {
 li { margin-top: 0.5em;
      margin-bottom: 1em; }
 
+.pagination {
+    font-size: 14px;
+}
+
 .post-info {
     float:right;
     margin:10px;
