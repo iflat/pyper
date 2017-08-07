@@ -87,8 +87,8 @@ ol {
 li { margin-top: 0.5em;
      margin-bottom: 1em; }
 
-.pagination {
-    font-size: 14px;
+.paginator {
+    font-size: 12px;
     margin-left: auto;
     margin-right: auto;
     width: 70%;
