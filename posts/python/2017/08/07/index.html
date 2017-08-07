@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>About Me</title>
+        <title>Pelican配置文件详解(二)</title>
         <link rel="stylesheet" href="http://www.pyper.cn/theme/css/main.css" />
 
         <!--[if IE]>
@@ -16,22 +16,53 @@
                 <nav><ul>
                     <li><a href="/">首页</a></li>
                     <li><a href="http://www.pyper.cn/archives/category/linux.html">Linux</a></li>
-                    <li><a href="http://www.pyper.cn/archives/category/python.html">Python</a></li>
+                    <li class="active"><a href="http://www.pyper.cn/archives/category/python.html">Python</a></li>
                     <li><a href="/pages/about-me/index.html">关于</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
-    <h1 class="entry-title">About Me</h1>
-    
-    <p>一个喜欢写代码的中学教师。</p>
-<div class="highlight"><pre><span></span><span class="n">Name</span> <span class="o">=</span> <span class="s1">&#39;Iflat&#39;</span>
-<span class="n">Sex</span> <span class="o">=</span> <span class="s1">&#39;Man&#39;</span>
-<span class="n">Skill</span> <span class="o">=</span> <span class="s1">&#39;coding&#39;</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">Name</span> <span class="o">+</span> <span class="s1">&#39; is a &#39;</span> <span class="o">+</span> <span class="n">Sex</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">Name</span> <span class="o">+</span> <span class="s1">&#39; like &#39;</span> <span class="o">+</span> <span class="n">Skill</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sorry! I can&#39;t told you ,you can press Ctrl+c to quit.&quot;</span><span class="p">)</span>
-</pre></div>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://www.pyper.cn/posts/python/2017/08/07/" rel="bookmark"
+           title="Permalink to Pelican配置文件详解(二)">Pelican配置文件详解(二)</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-08-07T16:20:00+08:00">
+                发布于: 2017-08-07 16:20
+        </abbr>
+
+        <address class="vcard author">
+                作者:                         <a class="url fn" href="http://www.pyper.cn/archives/author/iflat.html">Iflat</a>
+        </address>
+<p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
+<p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> </p>
+</footer><!-- /.post-info -->      <h1>Pelincan 配置变量</h1>
+<p>鉴于文档内容超长，将其分2次发布。</p>
+<p><strong>以下列举的配置变量其值为其默认值，即当没有在配置文件中设置该变量时，其所取值。</strong></p>
+<h2>时间和日期 设置变量</h2>
+<h4>TIMEZONE</h4>
+<blockquote>
+<p>时区设置。可用的时区请查看：<a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones">世界时区</a></p>
+</blockquote>
+<h4>DEFAULT_DATE = None</h4>
+<blockquote>
+<p>默认日期。如果设置为'fs'，pelican将尝试使用文档的创建日期。</p>
+</blockquote>
+<h4>DEFAULT_DATE_FORMAT = '%a %d %B %Y'</h4>
+<blockquote>
+<p>默认日期格式</p>
+</blockquote>
+<h4>DATE_FORMATS =</h4>
+<blockquote>
+<p>指定日期格式。注意这里是一个字典，你可以为不同语言设置不同的日期格式。可参考：<a href="http://docs.python.org/library/datetime.html#strftime-strptime-behavior">Python日期文档</a></p>
+</blockquote>
+<h4></h4>
+    </div><!-- /.entry-content -->
+
+  </article>
 </section>
         <section id="extras" class="body">
                 <div class="blogroll">

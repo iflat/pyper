@@ -23,7 +23,51 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/python/2017/08/06/">Pelican配置文件详解</a></h1>
+                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/python/2017/08/07/">Pelican配置文件详解(二)</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-08-07T16:20:00+08:00">
+                发布于: 2017-08-07 16:20
+        </abbr>
+
+        <address class="vcard author">
+                作者:                         <a class="url fn" href="http://www.pyper.cn/archives/author/iflat.html">Iflat</a>
+        </address>
+<p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
+<p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> </p>
+</footer><!-- /.post-info --><h1>Pelincan 配置变量</h1>
+<p>鉴于文档内容超长，将其分2次发布。</p>
+<p><strong>以下列举的配置变量其值为其默认值，即当没有在配置文件中设置该变量时，其所取值。</strong></p>
+<h2>时间和日期 设置变量</h2>
+<h4>TIMEZONE</h4>
+<blockquote>
+<p>时区设置。可用的时区请查看：<a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones">世界时区</a></p>
+</blockquote>
+<h4>DEFAULT_DATE = None</h4>
+<blockquote>
+<p>默认日期。如果设置为'fs'，pelican将尝试使用文档的创建日期。</p>
+</blockquote>
+<h4>DEFAULT_DATE_FORMAT = '%a %d %B %Y'</h4>
+<blockquote>
+<p>默认日期格式</p>
+</blockquote>
+<h4>DATE_FORMATS =</h4>
+<blockquote>
+<p>指定日期格式。注意这里是一个字典，你可以为不同语言设置不同的日期格式。可参考：<a href="http://docs.python.org/library/datetime.html#strftime-strptime-behavior">Python日期文档</a></p>
+</blockquote>
+<h4></h4>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h2>其它文章</h2>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.pyper.cn/posts/python/2017/08/06/" rel="bookmark"
+                           title="链接到 Pelican配置文件详解(一)">Pelican配置文件详解(一)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-08-06T16:50:00+08:00">
                 发布于: 2017-08-06 16:50
@@ -34,91 +78,10 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
 <p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> </p>
-</footer><!-- /.post-info --><h1>Pelican简介</h1>
-<p>Pelican 是一个使用 Python 语言编写的静态网页生成工具，它可以根据 markdown 文件的内容，自动生成结构化的网页。</p>
-<p>Pelican具有以下特点：</p>
-<ul>
-<li>原始内容可以是 reStructuredText, Markdown 或 AsciiDoc</li>
-<li>完全生成静态网页以方便发布，不需要数据库和服务器端后台逻辑的支持</li>
-<li>使用Jinja 模板库，可任意定制模板和主题</li>
-<li>支持多语种发布</li>
-<li>支持 Atom/RSS 订阅</li>
-<li>支持语法高亮</li>
-<li>可以从WordPress, Dotclear, RSS订阅或其它地方导入文章</li>
-<li>支持插件</li>
-</ul>
-<p>安装和使用非常简单，可参考我的前一篇文章<a href="http://www.pyper.cn/posts/python/2017/08/03/">GitHub上建博客</a> 。</p>
-<h1>Pelican的工作机制</h1>
-<p>Pelican 生成网页要处理的原材料是 contend/ 下的 markdown 文件。它把这些文件分成两类对待：一种是随时间不断添加或修改的博客文章；另一种是一旦创建完成后就不太会经常做更改的页面。以下分别用文章和页面代指这两个概念。</p>
-<p>无论是文章还是页面，它们从原始内容上来说，是没有区分的。以 markdown 格式的文件为例，在Pelican 中的markdown文件通常是这种样子的。这有一个简单的模版：</p>
-<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="kd">super</span> <span class="n">title</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
-<span class="n">Modified</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
-<span class="n">Tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">publishing</span>
-<span class="n">Slug</span><span class="o">:</span> <span class="n">my</span><span class="o">-</span><span class="kd">super</span><span class="o">-</span><span class="n">post</span>
-<span class="n">Authors</span><span class="o">:</span> <span class="n">Alexis</span> <span class="n">Metaireau</span><span class="o">,</span> <span class="n">Conan</span> <span class="n">Doyle</span>
-<span class="n">Summary</span><span class="o">:</span> <span class="n">Short</span> <span class="n">version</span> <span class="k">for</span> <span class="n">index</span> <span class="n">and</span> <span class="n">feeds</span>
-
-<span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="kd">super</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
-</pre></div>
-
-
-<p>从字面上来看，分别定义了标题、创建时间、修改时间、所属分类、标签、文章标注词、作者、摘要，最后一句话是文章正文内容。</p>
-<p>当Pelican 对这个文件进行处理时，这里的每一个定义都会变成重要的变量进行处理。通常 Pelican 会依据标题命名生成的网页文件，会依据时间变量把生成的网页放到指定路径中，例如，把这个网页放到：</p>
-<div class="highlight"><pre><span></span>/2010/12/05/my-super-post.html
-</pre></div>
-
-
-<p>或是依据某些变量执行对文章和页面进行分类、建立超链接等工作。</p>
-<p>所有这些定义除了标题是必选项以外，其它都是可选的。假如没有指定创建时间，Pelican 会使用文件本身的创建时间来代替时间变量；假如没有指定分类，Pelican 会判断文件放置在那个目录来对其进行分类；假如没有指定摘要，Pelican会在正文内容开始部分截取一定长度的文字作为摘要，以此类推。</p>
-<blockquote>
-<p>Pelican 还允许你自定义变量，可以在主配置文件中的FILENAME_METADATA字段中自行添加</p>
-</blockquote>
-<p>如果你在 contend/ 中创建了 pages/ 子目录，那么所有放到 pages/中的内容将被生成为之前所说的<strong>页面</strong>。</p>
-<p>了解了以上内容之后，你就可以在 content/ 中开始工作了。你可以选择自己喜欢的 markdown 编辑器来创建文章或页面，当然如果你对 markdown 还不太熟悉，可以在网上搜索相关资料，或是翻一下我写过的一篇相关文章<a href="http://www.pyper.cn/posts/python/2011/08/04/">二十分钟学习Markdown</a>，需要提示的是一定要按照刚才介绍的模版来创建你的文章，至少你要在文章的最开始定义Title。</p>
-<p>写完几篇文章之后，你的工作目录可能会变成以下的样子：</p>
-<div class="highlight"><pre><span></span>myblog/
-├── content
-│   ├── article1.md
-│   ├── article2.md
-│   └── pages
-│       └── about.md
-├── pelicanconf.py
-└...
-</pre></div>
-
-
-<p>现在可以使用Pelican 命令来生成你的博客网站了，执行：</p>
-<div class="highlight"><pre><span></span>pelican content/
-</pre></div>
-
-
-<p>程序执行完成之后，Pelican 会在命令行返回这次生成了几篇文章，几个页面，用了多少时间等。</p>
-<p>这时再<code>cd output/</code>，你就可以<code>ls</code>查看它到底生成了些什么东西。一般形如以下内容：</p>
-<div class="highlight"><pre><span></span>output/
-    ├── archives.html
-    ├── authors.html
-    ├──author
-    │   └──...
-    ├──category
-    │   └──...
-    ├── index.html
-    ├── my-first-article.html
-    ├──pages
-    │   └── about-me.html
-    └── test-post.html
-</pre></div>
-
-
-<p>首先你会发现，生成的文章和页面是按照你在 contend/ 创建的文章中定义的标题来命名的，例如： my-first-article ；test-post等。不幸的是，如果你的文章标题是汉语，将会产生奇怪的汉语拼音命名方式。并且你还会发现，如果你指定了分类，Pelican 将产生一个 category/ 目录，里边有以你的分类名称命名的 .html 文件。同样的情形，如果你的分类名称也是汉语的，将发现很多名称奇特的东西。</p>
-<p>等等，刚才不是说Pelican 会根据文章中的时间将网页放到以时间命名的路径中吗？不是还会根据文章中定义的分类来将生成的网页进行分类吗？为何现在所有生成的网页都和 index.html 放在一起？</p>
-<p>是的，刚才介绍这些内容的时候是提到Pelican 能够这么做，但这都需要我们对Pelican 做进一步的设置。在默认设置下，Pelican 只会把生成的网页放至网站的根路径。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h2>其它文章</h2>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Pelican的工作机制和配置文件详解</p>
+                <a class="readmore" href="http://www.pyper.cn/posts/python/2017/08/06/">详细内容...</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

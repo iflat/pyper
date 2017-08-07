@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>Pelican配置文件详解</title>
+        <title>Pelican配置文件详解(一)</title>
         <link rel="stylesheet" href="http://www.pyper.cn/theme/css/main.css" />
 
         <!--[if IE]>
@@ -25,7 +25,7 @@
     <header>
       <h1 class="entry-title">
         <a href="http://www.pyper.cn/posts/python/2017/08/06/" rel="bookmark"
-           title="Permalink to Pelican配置文件详解">Pelican配置文件详解</a></h1>
+           title="Permalink to Pelican配置文件详解(一)">Pelican配置文件详解(一)</a></h1>
     </header>
 
     <div class="entry-content">
@@ -39,7 +39,7 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
 <p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> </p>
-</footer><!-- /.post-info -->      <h1>Pelican简介</h1>
+</footer><!-- /.post-info -->      <h1>Pelican 简介</h1>
 <p>Pelican 是一个使用 Python 语言编写的静态网页生成工具，它可以根据 markdown 文件的内容，自动生成结构化的网页。</p>
 <p>Pelican具有以下特点：</p>
 <ul>
@@ -53,7 +53,7 @@
 <li>支持插件</li>
 </ul>
 <p>安装和使用非常简单，可参考我的前一篇文章<a href="http://www.pyper.cn/posts/python/2017/08/03/">GitHub上建博客</a> 。</p>
-<h1>Pelican的工作机制</h1>
+<h1>Pelican 工作机制</h1>
 <p>Pelican 生成网页要处理的原材料是 contend/ 下的 markdown 文件。它把这些文件分成两类对待：一种是随时间不断添加或修改的博客文章；另一种是一旦创建完成后就不太会经常做更改的页面。以下分别用文章和页面代指这两个概念。</p>
 <p>无论是文章还是页面，它们从原始内容上来说，是没有区分的。以 markdown 格式的文件为例，在Pelican 中的markdown文件通常是这种样子的。这有一个简单的模版：</p>
 <div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="kd">super</span> <span class="n">title</span>
@@ -69,14 +69,14 @@
 </pre></div>
 
 
-<p>从字面上来看，分别定义了标题、创建时间、修改时间、所属分类、标签、文章标注词、作者、摘要，最后一句话是文章正文内容。</p>
-<p>当Pelican 对这个文件进行处理时，这里的每一个定义都会变成重要的变量进行处理。通常 Pelican 会依据标题命名生成的网页文件，会依据时间变量把生成的网页放到指定路径中，例如，把这个网页放到：</p>
+<p>从字面上来看，分别定义了标题、创建时间、修改时间、所属分类、标签、文章标注词、作者、摘要等，在Pelican 中，我们把这些内容称作一篇文章或页面的元数据。它们是Pelican 对一个文件进行处理时必须要使用的重要数据。最后一句话是文章正文内容。</p>
+<p>当Pelican 对这个文件进行处理时，这里的每一个元数据都会被当作重要的变量进行处理。通常 Pelican 会依据标题元数据命名生成的网页文件，会依据时间元数据把生成的网页放到指定路径中，例如，把这个网页放到：</p>
 <div class="highlight"><pre><span></span>/2010/12/05/my-super-post.html
 </pre></div>
 
 
-<p>或是依据某些变量执行对文章和页面进行分类、建立超链接等工作。</p>
-<p>所有这些定义除了标题是必选项以外，其它都是可选的。假如没有指定创建时间，Pelican 会使用文件本身的创建时间来代替时间变量；假如没有指定分类，Pelican 会判断文件放置在那个目录来对其进行分类；假如没有指定摘要，Pelican会在正文内容开始部分截取一定长度的文字作为摘要，以此类推。</p>
+<p>或是依据某个元数据执行对文章和页面进行分类、建立超链接等工作。元数据 Status: draft，将文章状态设置为草稿，而不进行发布。</p>
+<p>所有这些元数据除了标题是必选项以外，其它都是可选的。假如没有指定创建时间，Pelican 会使用文件本身的创建时间来代替时间变量；假如没有指定分类，Pelican 会判断文件放置在那个目录来对其进行分类；假如没有指定摘要，Pelican会在正文内容开始部分截取一定长度的文字作为摘要，以此类推。</p>
 <blockquote>
 <p>Pelican 还允许你自定义变量，可以在主配置文件中的FILENAME_METADATA字段中自行添加</p>
 </blockquote>
@@ -116,9 +116,392 @@
 </pre></div>
 
 
-<p>首先你会发现，生成的文章和页面是按照你在 contend/ 创建的文章中定义的标题来命名的，例如： my-first-article ；test-post等。不幸的是，如果你的文章标题是汉语，将会产生奇怪的汉语拼音命名方式。并且你还会发现，如果你指定了分类，Pelican 将产生一个 category/ 目录，里边有以你的分类名称命名的 .html 文件。同样的情形，如果你的分类名称也是汉语的，将发现很多名称奇特的东西。</p>
-<p>等等，刚才不是说Pelican 会根据文章中的时间将网页放到以时间命名的路径中吗？不是还会根据文章中定义的分类来将生成的网页进行分类吗？为何现在所有生成的网页都和 index.html 放在一起？</p>
-<p>是的，刚才介绍这些内容的时候是提到Pelican 能够这么做，但这都需要我们对Pelican 做进一步的设置。在默认设置下，Pelican 只会把生成的网页放至网站的根路径。</p>
+<p>首先你会发现，生成的文章和页面是按照你在 contend/ 创建的文章的标题元数据来命名的，例如： my-first-article ；test-post等。不幸的是，如果你的文章标题是汉语，将会产生奇怪的汉语拼音命名方式。并且你还会发现，如果你指定了分类，Pelican 将产生一个 category/ 目录，里边有以你的分类名称命名的 .html 文件。同样的情形，如果你的分类名称也是汉语的，将发现很多名称奇特的东西。</p>
+<p>等等，刚才不是说Pelican 会根据文章中的时间元数据将网页放到以时间命名的路径中吗？不是还会根据文章中的分类元数据来将生成的网页进行分类吗？为何现在所有生成的网页都和 index.html 放在一起？</p>
+<p>是的，刚才介绍这些内容的时候提到Pelican 能够这么做，但这需要我们对Pelican 的配置文件做进一步的修改。在默认配置下，Pelican 把生成的网页放至网站的根目录，且所有分类的文章都放至网站根目录。</p>
+<h1>Pelican 配置文件</h1>
+<p>以上我们对Pelican 的工作过程有了一个简单了解，已经知道Pelican 是按照它的配置文件进行工作的，且默认配置一般不符合我们的要求。现在我们来认识一下这个配置文件：pelicanconf.py 。</p>
+<p>第一个要注意的是 pelicanconf.py 是一个Python 源码文件，Pelican 在工作时将其作为一个模块导入。文件内容是各种变量的定义，Pelican要求所有变量名称必须使用大写字母，变量值可以是任意的python数据类型。下面是官方的示例：</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s1">&#39;Alexis Métaireau&#39;</span>            <span class="c1">#作者</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s2">&quot;Alexis&#39; log&quot;</span>               <span class="c1">#站点名称</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://blog.notmyidea.org&#39;</span>  <span class="c1">#站点URL</span>
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s2">&quot;Europe/Paris&quot;</span>              <span class="c1">#时区</span>
+
+<span class="c1"># 允许使用相对路径在进行本地测试时是方便的，但发布时请将其设为False</span>
+<span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">GITHUB_URL</span> <span class="o">=</span> <span class="s1">&#39;http://github.com/ametaireau/&#39;</span>      <span class="c1">#github地址</span>
+<span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s2">&quot;blog-notmyidea&quot;</span>                <span class="c1">#Disqus帐号</span>
+<span class="n">REVERSE_CATEGORY_ORDER</span> <span class="o">=</span> <span class="bp">True</span>                     <span class="c1">#分类次序反转</span>
+<span class="n">LOCALE</span> <span class="o">=</span> <span class="s2">&quot;C&quot;</span>                                      <span class="c1">#</span>
+<span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">4</span>                            <span class="c1">#每页文章数量</span>
+<span class="n">DEFAULT_DATE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>             <span class="c1">#默认日期</span>
+
+<span class="n">FEED_ALL_RSS</span> <span class="o">=</span> <span class="s1">&#39;feeds/all.rss.xml&#39;</span>                <span class="c1">#RSS订阅</span>
+<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s1">&#39;feeds/</span><span class="si">%s</span><span class="s1">.rss.xml&#39;</span>            <span class="c1">#RSS订阅分类</span>
+
+<span class="c1"># 定义链接</span>
+<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;Biologeek&#39;</span><span class="p">,</span> <span class="s1">&#39;http://biologeek.org&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Filyb&#39;</span><span class="p">,</span> <span class="s2">&quot;http://filyb.info/&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Libert-fr&#39;</span><span class="p">,</span> <span class="s2">&quot;http://www.libert-fr.com&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;N1k0&#39;</span><span class="p">,</span> <span class="s2">&quot;http://prendreuncafe.com/blog/&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Tarek Ziadé&#39;</span><span class="p">,</span> <span class="s2">&quot;http://ziade.org/blog&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Zubin Mithra&#39;</span><span class="p">,</span> <span class="s2">&quot;http://zubin71.wordpress.com/&quot;</span><span class="p">),)</span>
+
+<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;twitter&#39;</span><span class="p">,</span> <span class="s1">&#39;http://twitter.com/ametaireau&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;lastfm&#39;</span><span class="p">,</span> <span class="s1">&#39;http://lastfm.com/user/akounet&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="s1">&#39;http://github.com/ametaireau&#39;</span><span class="p">),)</span>
+
+<span class="c1"># 全局元数据默认值</span>
+<span class="n">DEFAULT_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;yeah&#39;</span><span class="p">:</span> <span class="s1">&#39;it is&#39;</span><span class="p">}</span>
+
+<span class="c1"># 额外的元数据路径</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;extra/robots.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;robots.txt&#39;</span><span class="p">},</span>
+    <span class="p">}</span>
+
+<span class="c1"># 静态内容</span>
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;pictures&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;extra/robots.txt&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+<span class="c1"># 指定页面模板</span>
+<span class="n">TEMPLATE_PAGES</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pages/jinja2_template.html&#39;</span><span class="p">:</span> <span class="s1">&#39;jinja2_template.html&#39;</span><span class="p">}</span>
+
+<span class="c1"># 代码块显示风格，行号</span>
+<span class="n">PYGMENTS_RST_OPTIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;linenos&#39;</span><span class="p">:</span> <span class="s1">&#39;table&#39;</span><span class="p">}</span>
+
+<span class="c1"># foobar 变量将不会起任何作用，因为pelican要求所有变量名称必须使用全部大写字母</span>
+<span class="c1"># 这点要注意</span>
+<span class="n">foobar</span> <span class="o">=</span> <span class="s2">&quot;barbaz&quot;</span>
+</pre></div>
+
+
+<p>在配置文件中你可以定义作者(AUTHOR)、站点名称(SITENAME)、元数据默认值(DEFAULT_METADATA)等。当然Pelican 的可配置项不仅仅只有示例文档中列举的这么些，很多没有在配置文件中出现的配置项或是也可以称作Pelincan 变量都被以默认值的方式进行了处理，只不过没有在这里出现而已。</p>
+<p>下面我们对Pelincan 的常用配置变量进行详细的介绍。</p>
+<h1>Pelincan 配置变量</h1>
+<p><strong>以下列举的配置变量其值为其默认值，即当没有在配置文件中设置该变量时，其所取值。</strong></p>
+<h2>基本设置变量</h2>
+<h4>USE_FOLDER_AS_CATEGORY = True</h4>
+<blockquote>
+<p>是否使用目录作为分类。若你没有在文章元数据中指定文章所属分类，且文章被放在 content/ 下某个子目录中，Pelican 将使用该子目录的名称作为该文章的分类。如果该配置变量为False ，文章将被归入 DEFAULT_CATEGORY 指定的默认分类。</p>
+</blockquote>
+<h4>DEFAULT_CATEGORY = 'misc'</h4>
+<blockquote>
+<p>默认分类。既没有分类元数据，又没有被归入目录分类的文章，积聚于此。</p>
+</blockquote>
+<h4>DISPLAY_PAGES_ON_MENU = True</h4>
+<blockquote>
+<p>是否将_页面_加入菜单。页面数量比较少时可以，当页面较多时就成问题了。</p>
+</blockquote>
+<h4>DISPLAY_CATEGORIES_ON_MENU = True</h4>
+<blockquote>
+<p>是否在菜单显示分类。一般情况下都需要显示吧！</p>
+</blockquote>
+<h4>DOCUTILS_SETTINGS =</h4>
+<blockquote>
+<p>使用reStructuredText格式文章时的额外配置数据。请参考<a href="http://docutils.sourceforge.net/docs/user/config.html">Docutils Configuration</a></p>
+</blockquote>
+<h4>DELETE_OUTPUT_DIRECTORY = False</h4>
+<blockquote>
+<p>是否在执行生成前删除原有输出目录。这将把原来输出目录里的所有内容清除，当输出目录里面充斥大量垃圾页面时可使用，但一定要确认你知道自己在干什么。</p>
+</blockquote>
+<h4>OUTPUT_RETENTION = []</h4>
+<blockquote>
+<p>生成页面时输出目录应保留内容。该列表里指定的文件和目录在pelican执行生成工作时将不会被删除或覆盖，这一般用来保护版本控制工具的目录信息，比如Git。示例：<code>OUTPUT_RETENTION = [".hg", ".git", ".bzr"]</code></p>
+</blockquote>
+<h4>JINJA_ENVIRONMENT = {'trim_blocks': True, 'lstrip_blocks': True}</h4>
+<blockquote>
+<p>传递给Jinja模板库的变量字典，用来控制Jinja的工作方式。可用参数请参考：<a href="http://jinja.pocoo.org/docs/dev/api/#jinja2.Environment">Jinja 环境变量</a></p>
+</blockquote>
+<h4>JINJA_FILTERS = {}</h4>
+<blockquote>
+<p>Jinja2过滤器。详情请参考<a href="http://jinja.pocoo.org/docs/api/#custom-filters">自定义 Jinja 过滤器</a></p>
+</blockquote>
+<h4>LOG_FILTER = []</h4>
+<blockquote>
+<p>日志过滤器。列表中的每个元组定义不同日志级别可忽略的日志信息。示例：<code>LOG_FILTER = [(logging.WARN, 'TAG_SAVE_AS is set to False')]</code></p>
+</blockquote>
+<h4>READERS =</h4>
+<blockquote>
+<p>自定义READER，READER是Pelican 中用来处理不同格式文档的前端处理器，通常一种格式的文档由其对应的READER处理，例如markdown和其对应的READER 。<br>
+示例：</p>
+<blockquote>
+<ul>
+<li>READERS = {'html': None} 表示不处理html文档；</li>
+<li>READERS = {'foo': FooReader} 表示foo格式的文档由FooReader进行处理。</li>
+</ul>
+</blockquote>
+</blockquote>
+<h4>IGNORE_FILES = ['.#*']</h4>
+<blockquote>
+<p>忽略文档。匹配某一列表项的 content/ 中的原始文档将不被处理。如<code>['__pycache__']</code>，将忽略所有python字节码目录。</p>
+</blockquote>
+<h4 class="..">MARKDOWN =</h4>
+<blockquote>
+<p>使用markdown格式文章时的额外配置数据。请参考：<a href="http://pythonhosted.org/Markdown/reference.html#markdown">Markdown选项</a></p>
+</blockquote>
+<h4>OUTPUT_PATH = 'output/'</h4>
+<blockquote>
+<p>生成页面的输出路径。默认为 output/ ，你也将其重定义为其它地方。</p>
+</blockquote>
+<h4>PATH</h4>
+<blockquote>
+<p>默认输入路径。默认为当前路径，通常建议将其设置为<code>PATH = ‘content/’</code>，或在pelican命令行指定路径。</p>
+</blockquote>
+<h4>PAGE_PATHS = ['pages']</h4>
+<blockquote>
+<p>页面类型文档的路径。默认为 pages/ </p>
+</blockquote>
+<h4>ARTICLE_PATHS = ['']</h4>
+<blockquote>
+<p>文章类型文档的路径。默认为空，即使用PATH指定的目录，即当前目录。</p>
+</blockquote>
+<h4>PAGE_EXCLUDES = []</h4>
+<blockquote>
+<p>被排除的页面文档路径。可以在指定为文章文档类型的目录中，额外排除一个子目录，用来保存页面。</p>
+</blockquote>
+<h4>ARTICLE_EXCLUDES = []</h4>
+<blockquote>
+<p>被排除的文章文档路径。可以在指定为页面文档类型的目录中，额外排除一个子目录，用来保存文章。</p>
+</blockquote>
+<h4>OUTPUT_SOURCES = False</h4>
+<blockquote>
+<p>是否以原始格式输出。如果设置为True，将不对文档进行处理，直接将原始文件复制到输出目录。</p>
+</blockquote>
+<h4>OUTPUT_SOURCES_EXTENSION = '.text'</h4>
+<blockquote>
+<p>设置生成器要处理的文档类型，默认只对文本格式的文档进行处理。</p>
+</blockquote>
+<h4>PLUGINS = []</h4>
+<blockquote>
+<p>要使用的插件列表。详情查看：<a href="http://docs.getpelican.com/en/3.7.1/plugins.html#plugins">插件</a></p>
+</blockquote>
+<h4>PLUGIN_PATHS = []</h4>
+<blockquote>
+<p>插件路径。详情查看：<a href="http://docs.getpelican.com/en/3.7.1/plugins.html#plugins">插件</a></p>
+</blockquote>
+<h4>SITENAME = 'A Pelican Blog'</h4>
+<blockquote>
+<p>站点名称。</p>
+</blockquote>
+<h4>SITEURL</h4>
+<blockquote>
+<p>站点URL。该值将作为生成超链接时的 Base 值，应该包含使用的协议和你的域名，但其后不要有‘/’。示例：<br>
+<code>SITEURL = 'http://mydomain.com'</code></p>
+</blockquote>
+<h4>STATIC_PATHS = ['images']</h4>
+<blockquote>
+<p>静态文件的存放目录。一般用来存放图片，样式文件，js文件等。pelican将这样的文件直接复制到输出目录。</p>
+</blockquote>
+<h4>STATIC_EXCLUDES = []</h4>
+<blockquote>
+<p>被排除的静态文件目录。</p>
+</blockquote>
+<h4>STATIC_EXCLUDE_SOURCES = True</h4>
+<blockquote>
+<p>静态文件目录中的文章源是否原始输出。</p>
+</blockquote>
+<h4>TYPOGRIFY = False</h4>
+<blockquote>
+<p>是否利用Typogrify库提升HTML的生成。详情：<a href="https://pypi.python.org/pypi/typogrify">Typogrify</a></p>
+</blockquote>
+<h4>TYPOGRIFY_IGNORE_TAGS = []</h4>
+<blockquote>
+<p>TYPOGRIFY库忽略的标签列表。</p>
+</blockquote>
+<h4>SUMMARY_MAX_LENGTH = 50</h4>
+<blockquote>
+<p>自动摘要的最大长度。如果没有在源文档中指定摘要，该设置pelican最大截取多少正文内容做摘要。</p>
+</blockquote>
+<h4>WITH_FUTURE_DATES = True</h4>
+<blockquote>
+<p>是否允许使用将来日期，默认允许在文章中指定未来日期。如果禁用，当一篇文章指定的日期还未到来时，文章状态自动设置为 draft--草稿状态，而不会被发布。</p>
+</blockquote>
+<h4>INTRASITE_LINK_REGEX = '<a href="?P&lt;what&gt;.*?">{|</a>[|}]'</h4>
+<blockquote>
+<p>指定那些内容将被作为内部链接处理。默认是<code>{}和||</code>中的内容将被处理为内部链接。</p>
+</blockquote>
+<h4>PYGMENTS_RST_OPTIONS = []</h4>
+<blockquote>
+<p>代码块语法高亮选项。只针对reStructuredText格式文档。</p>
+</blockquote>
+<h4>SLUGIFY_SOURCE = 'title'</h4>
+<blockquote>
+<p>标注词来源。如果文章没有指定Slug，将使用标题产生Slug。Slug是一篇文章的标注词，常用来做生成页面的名称或路径。</p>
+</blockquote>
+<h4>CACHE_CONTENT = False</h4>
+<blockquote>
+<p>是否对生成内容缓存。</p>
+</blockquote>
+<h4>CONTENT_CACHING_LAYER = 'reader'</h4>
+<blockquote>
+<p>缓存内容类型。可设置为 reader 或 generator 。</p>
+</blockquote>
+<h4>CACHE_PATH = 'cache'</h4>
+<blockquote>
+<p>缓存存放路径</p>
+</blockquote>
+<h4>GZIP_CACHE = True</h4>
+<blockquote>
+<p>是否对缓存进行压缩</p>
+</blockquote>
+<h4>CHECK_MODIFIED_METHOD = 'mtime'</h4>
+<blockquote>
+<p>文章变动检测方法</p>
+</blockquote>
+<h4>LOAD_CONTENT_CACHE = False</h4>
+<blockquote>
+<p>是否从缓存加载内容</p>
+</blockquote>
+<h4>WRITE_SELECTED = []</h4>
+<blockquote>
+<p>指定要重新生成的文件的列表。为空，表示全部页面需要重新生成。</p>
+</blockquote>
+<h4>FORMATTED_FIELDS = ['summary']</h4>
+<blockquote>
+<p>指定哪些包含 reST 或 Markdown 格式化内容的元数据将被处理。默认只有摘要中可使用格式化语法。</p>
+</blockquote>
+<h2>URL 设置变量</h2>
+<p>首先需要了解的是，Pelican 使用两种URL生成方法来建立路径和超链接：相对路径链接和绝对路径链接。相对路径方法适合在本地做测试，绝对路径方法适合做正式发布。推荐的用法是分别建立使用其中一种方法的2个配置文件，使用相对路径方法的配置文件生成可在本地快速测试的临时内容，正式发布时使用绝对路径方法配置文件生成正式站点。</p>
+<p>以下设置变量用来定义生成页面的存放路径和命名。其字符串采用的是Python 字符串格式化方法。使用这些变量，可以将文章和页面生成到你想要的任意位置。  </p>
+<blockquote>
+<p>如果你使用了datetime变量，请参考其Python 用法：<a href="http://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior">Python日期时间文档</a></p>
+</blockquote>
+<p>你可能用到的元数据包括：</p>
+<ul>
+<li>slug</li>
+<li>date</li>
+<li>lang</li>
+<li>author</li>
+<li>category</li>
+</ul>
+<h4>RELATIVE_URLS = False</h4>
+<blockquote>
+<p>是否使用相对路径方式。默认为不使用，即使用绝对路径方式生成路径和链接。</p>
+</blockquote>
+<h4>ARTICLE_URL = '{slug}.html'</h4>
+<blockquote>
+<p>文章的URL。默认在当前位置查找以slug命名的网页文件。</p>
+</blockquote>
+<h4>ARTICLE_SAVE_AS = '{slug}.html'</h4>
+<blockquote>
+<p>文章的保存位置和命名。默认使用slug来命名生成的网页文件，保存位置在当前路径。</p>
+</blockquote>
+<h4>ARTICLE_LANG_URL = '{slug}-{lang}.html'</h4>
+<blockquote>
+<p>非默认语言文章的URL 。</p>
+</blockquote>
+<h4>ARTICLE_LANG_SAVE_AS = '{slug}-{lang}.html'</h4>
+<blockquote>
+<p>非默认语言文章的保存位置和命名。</p>
+</blockquote>
+<h4>DRAFT_URL = 'drafts/{slug}.html'</h4>
+<blockquote>
+<p>草稿文章的URL。</p>
+</blockquote>
+<h4>DRAFT_SAVE_AS = 'drafts/{slug}.html'</h4>
+<blockquote>
+<p>草稿文章的保存位置和命名。</p>
+</blockquote>
+<h4>DRAFT_LANG_URL = 'drafts/{slug}-{lang}.html'</h4>
+<blockquote>
+<p>非默认语言的草稿文章的URL</p>
+</blockquote>
+<h4>DRAFT_LANG_SAVE_AS = 'drafts/{slug}-{lang}.html'</h4>
+<blockquote>
+<p>非默认语言的草稿文章的保存位置和命名</p>
+</blockquote>
+<h4>PAGE_URL = 'pages/{slug}.html'</h4>
+<blockquote>
+<p>页面的URL</p>
+</blockquote>
+<h4>PAGE_SAVE_AS = 'pages/{slug}.html'</h4>
+<blockquote>
+<p>页面的保存位置和命名</p>
+</blockquote>
+<h4>PAGE_LANG_URL = 'pages/{slug}-{lang}.html'</h4>
+<blockquote>
+<p>非默认语言的页面的URL</p>
+</blockquote>
+<h4>PAGE_LANG_SAVE_AS = 'pages/{slug}-{lang}.html'</h4>
+<blockquote>
+<p>非默认语言的页面的保存位置和命名</p>
+</blockquote>
+<h4>CATEGORY_URL = 'category/{slug}.html'</h4>
+<blockquote>
+<p>分类文章的URL</p>
+</blockquote>
+<h4>CATEGORY_SAVE_AS = 'category/{slug}.html'</h4>
+<blockquote>
+<p>分类文章的保存位置和命名</p>
+</blockquote>
+<h4>TAG_URL = 'tag/{slug}.html'</h4>
+<blockquote>
+<p>特定标签的URL</p>
+</blockquote>
+<h4>TAG_SAVE_AS = 'tag/{slug}.html'</h4>
+<blockquote>
+<p>特定标签的保存位置和命名</p>
+</blockquote>
+<h4>AUTHOR_URL = 'author/{slug}.html'</h4>
+<blockquote>
+<p>特定作者的URL</p>
+</blockquote>
+<h4>AUTHOR_SAVE_AS = 'author/{slug}.html'</h4>
+<blockquote>
+<p>特定作者的页面位置和命名</p>
+</blockquote>
+<h4>YEAR_ARCHIVE_SAVE_AS = ''</h4>
+<blockquote>
+<p>年度归档的保存位置和命名</p>
+</blockquote>
+<h4>MONTH_ARCHIVE_SAVE_AS = ''</h4>
+<blockquote>
+<p>月归档的保存位置和命名</p>
+</blockquote>
+<h4>DAY_ARCHIVE_SAVE_AS = ''</h4>
+<blockquote>
+<p>日归档的保存位置和命名</p>
+</blockquote>
+<h4>SLUG_SUBSTITUTIONS = ()</h4>
+<blockquote>
+<p>主题词冲突替换规则</p>
+</blockquote>
+<h4>AUTHOR_SUBSTITUTIONS = ()</h4>
+<blockquote>
+<p>作者冲突替换规则</p>
+</blockquote>
+<h4>CATEGORY_SUBSTITUTIONS = ()</h4>
+<blockquote>
+<p>分类冲突替换规则</p>
+</blockquote>
+<h4>TAG_SUBSTITUTIONS = ()</h4>
+<blockquote>
+<p>标签冲突替换规则</p>
+</blockquote>
+<p><strong>_SAVE_AS为空的变量将不产生出来结果，可使用这种方法阻止相应网页的生成</strong></p>
+<h4>AUTHORS_SAVE_AS = 'authors.html'</h4>
+<blockquote>
+<p>所有作者列表的保存位置和命名</p>
+</blockquote>
+<h4>CATEGORIES_SAVE_AS = 'categories.html'</h4>
+<blockquote>
+<p>所有分类列表的保存位置和命名</p>
+</blockquote>
+<h4>TAGS_SAVE_AS = 'tags.html'</h4>
+<blockquote>
+<p>所有标签列表的保存位置和命名</p>
+</blockquote>
+<h4>INDEX_SAVE_AS = 'index.html'</h4>
+<blockquote>
+<p>默认首页的保存位置和命名</p>
+</blockquote>
+<p>所有URL设置变量会被模版模块处理，它们可能会自行修改和使用这里定义的变量。如果你修改了这里某个默认的变量值，例如你修改了默认首页文件的名字，可能造成模版模块处理出错。</p>
     </div><!-- /.entry-content -->
 
   </article>
