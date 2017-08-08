@@ -350,7 +350,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px;
-	text-align: left;
+	text-align: center;
 	width: 760px;
 	
 	border-radius: 10px;
@@ -370,7 +370,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 	Footer
 *****************/
 #contentinfo {padding-bottom: 2em; text-align: right;}
-
+#about {text-align: center;}
 /***** Sections *****/
 /* Blog */
 .hentry {
@@ -400,7 +400,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 	#posts-list footer {
 		left: 10px;
 		position: relative;
-        float: left;
+	        float: left;
 		top: 0.5em;
 		width: 190px;
 	}
