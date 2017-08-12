@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>VIM常用指令</title>
+        <title>VIM常用插件</title>
         <link rel="stylesheet" href="http://www.pyper.cn/theme/css/main.css" />
 
         <!--[if IE]>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="http://www.pyper.cn/">BlockPy  <strong>A python coder's simple blog.</strong></a></h1>
+                <h1><a href="http://www.pyper.cn/">Pyper  <strong>A python coder's simple blog.</strong></a></h1>
                 <nav><ul>
                     <li><a href="/">首页</a></li>
                     <li class="active"><a href="http://www.pyper.cn/archives/category/linux.html">Linux</a></li>
@@ -25,7 +25,7 @@
     <header>
       <h1 class="entry-title">
         <a href="http://www.pyper.cn/posts/linux/2010/08/14/" rel="bookmark"
-           title="Permalink to VIM常用指令">VIM常用指令</a></h1>
+           title="Permalink to VIM常用插件">VIM常用插件</a></h1>
     </header>
 
     <div class="entry-content">
@@ -39,7 +39,41 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/linux.html">Linux</a></p>
 <p>tags: <a href="http://www.pyper.cn/archives/tag/vim.html">Vim</a> </p>
-</footer><!-- /.post-info -->      <p>简单记录一下在github上设置博客的步骤.</p>
+</footer><!-- /.post-info -->      <h2>Vim常用插件</h2>
+<p>vim的插件功能相当棒，为特定应用场景而制作的各式各样的插件让人眼花缭乱。下面将常用的插件列举并简单说明，以备参考。</p>
+<h4>vim-plug.vim</h4>
+<p>vim-plug是第一个要介绍的，因为它是管理插件的插件（类似的插件还有：vundel、pathogen、neobundle等）。使用它可以自动完成其它插件的安装、升级，而不用再手动管理一个一个的插件。</p>
+<p>详细安装步骤和使用方法，请访问<a href="https://github.com/junegunn/vim-plug">vim-plug</a></p>
+<h4>dir-configs-override.vim</h4>
+<p>使用dir-configs-override可以让你可以更自由的配置vim。只要在目录里新建一个名称为 .vim.custom 的文件并在其中添加配置信息，当你在当前目录运行vim时，该文件中的配置信息就会覆写vim默认配置文件的对应项，从而可以为每个目录定义一个独特的vim。</p>
+<p>详细请查看<a href="https://github.com/arielrossanigo/dir-configs-override.vim">dir-configs-override</a></p>
+<h4>NERD_tree.vim</h4>
+<p>NERDTree是一个相当方便的文件浏览插件，来简化文档的查找和访问。详情查看：<a href="https://github.com/scrooloose/nerdtree">NERDTree</a></p>
+<h4>NERD Commenter.vim</h4>
+<p>可以快速地注释代码，或为代码添加注释。和上一个插件NERDTree为同一个作者。详情查看：<a href="https://github.com/scrooloose/nerdcommenter">NERD Commenter</a></p>
+<h4>Tagbar.vim</h4>
+<p>Tagbar参考ctags的变量，函数或类名，创建一个快速参考栏。这样打开参考栏之后可以快速地导航到指定位置。</p>
+<p><a href="https://github.com/majutsushi/tagbar">tagbar</a></p>
+<h4>ctrlp.vim</h4>
+<p>这是一个相当强大的搜索工具，可以快速完成文件搜索并导航到指定位置。<a href="https://github.com/ctrlpvim/ctrlp.vim">ctrlp.vim</a></p>
+<h4>emmet-vim</h4>
+<p>广大网站前端开发者的福音，使用emmet可以快速完成html代码。Github<a href="https://github.com/mattn/emmet-vim">Emmet</a>;还有个简单的<a href="http://www.zfanw.com/blog/zencoding-vim-tutorial-chinese.html">使用说明</a></p>
+<h4>git-vim</h4>
+<p>让你直接在 vim 中执行 git，而不必离开 vim 环境。<a href="https://github.com/motemen/git-vim">git-vim</a></p>
+<h4>tabman.vim</h4>
+<p>一个灵活的Tab和窗口操作插件，能轻松完成Tab和窗口的切换、跳转和管理。<a href="https://github.com/kien/tabman.vim">Tabman</a></p>
+<h4>vim-airline</h4>
+<p>增强的vim状态栏插件，<a href="https://github.com/vim-airline">airline</a></p>
+<h4>conque-term</h4>
+<p>conque-term使用缓冲区来连接并模拟一个终端，你可以在终端里运行程序。如果使用Python ，就可以模拟出REPL操作。<a href="https://github.com/rosenfeld/conque-term">Conque-term</a></p>
+<h4>FixedTaskList.vim</h4>
+<p>可以自动搜索你记录的TODO、FIXME等文件生成一个任务列表，这样就不会忘记自己要干什么。<a href="https://github.com/fisadev/FixedTaskList.vim">FixedTaskList.vim</a></p>
+<h4>vim-surround</h4>
+<p>自动完成匹配括号的增删，修改等操作。<a href="https://github.com/tpope/vim-surround">vim-surround</a></p>
+<h4>vim-autoclose</h4>
+<p>完成匹配括号的自动闭合操作，貌似对python用处小了。<a href="https://github.com/Townk/vim-autoclose">vim-autoclose</a></p>
+<h4>vim-indent-object</h4>
+<p>代码块缩进操作。<a href="https://github.com/michaeljsmith/vim-indent-object">vim-indent-object</a></p>
     </div><!-- /.entry-content -->
 
   </article>
