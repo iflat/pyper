@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>Pyper - Iflat</title>
+        <title>Pyper - iflat</title>
         <link rel="stylesheet" href="http://www.pyper.cn/theme/css/main.css" />
 
         <!--[if IE]>
@@ -16,6 +16,7 @@
                 <nav><ul>
                     <li><a href="/">首页</a></li>
                     <li><a href="http://www.pyper.cn/archives/category/linux.html">Linux</a></li>
+                    <li><a href="http://www.pyper.cn/archives/category/program.html">Program</a></li>
                     <li><a href="http://www.pyper.cn/archives/category/python.html">Python</a></li>
                     <li><a href="/pages/about-me/index.html">关于</a></li>
                 </ul></nav>
@@ -23,7 +24,40 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/python/2017/08/07/">Pelican配置文件详解(二)</a></h1>
+                    <h1 class="entry-title"><a href="http://www.pyper.cn/posts/program/2017/08/12/">说说编程语言的术语--变量</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-08-12T10:20:00+08:00">
+                发布于: 2017-08-12 10:20
+        </abbr>
+
+        <address class="vcard author">
+                作者:                         <a class="url fn" href="http://www.pyper.cn/archives/author/iflat.html">iflat</a>
+        </address>
+<p>分类: <a href="http://www.pyper.cn/archives/category/program.html">Program</a></p>
+<p>tags: <a href="http://www.pyper.cn/archives/tag/language.html">language</a> <a href="http://www.pyper.cn/archives/tag/terminology.html">terminology</a> </p>
+</footer><!-- /.post-info --><h2>变量（variable）</h2>
+<p>变量是任何一种高级编程语言里的必用术语。通常定义一个变量，指的是在内存空间里划出一块地方来保存一个值。</p>
+<p>首先这个值可能是各种各样类型的，可能是一个数，也可能是一串文字，还可能是一个表，也就是说保存不同类型的值，你需要不同大小的空间来容的下这个东西。</p>
+<p>如果这个值比较简单，就可以在一个连续的内存空间放的下；如果这个值是个复杂的东西，连续存放不太方便，那就需要把它适当地拆分放到不连续的内存空间。当然，把它放到了不连续的空间，你必须保证能再次把它顺利找出来。</p>
+<p>这是不是非常类似于我们往仓库里放东西。事实上，我们在编程时必须有“仓库”的概念，必须时刻在脑子里维护着这个“仓库”，记录着这个仓库的库存状态。</p>
+<p>一个合格的管理员把东西放到仓库后，必须能记得住具体的存放位置，这样可以随时把需要的东西找出来用。如果这是一个比较大的仓库，管理员必须做个详细的记录，记录每件东西的存放位置，不然很容易忘记什么东西放到什么位置了。</p>
+<p>这个位置通常就是我们说的变量名或是变量指针，它是一个代号，表示一个地址，而不是指这个地址里放的东西。内存中的位置就是表示内存地址的一个数。在平时交流中，有时候很容易对这两个不同的概念产生混淆。例如：“把256号改成258”,这句话会有两种解释，一是把256这个数本身改成258,二是把256号地址里的内容改成258。</p>
+<p>更进一步的是有时候在不同的语言情景中，我们自己还会不加区分地混用变量和变量名这两个概念。这就好比我们平时说某个人的时候直接说这个人的名字，而不用特别强调是某某某这个人。例如：“把张三叫过来”，指的就是把张三这个人叫过来，而不说成“把名字是张三的这个人叫过来”。</p>
+<p>不同的编程语言对变量和变量名往往有很不一样的理解。</p>
+<p>一般静态语言里的变量名就是一个临时的代号，并且这个代号只在源代码阶段出现，只是方便我们称呼这个变量。当其被编译成可执行的程序后，这个代号就变成一个实际的地址。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h2>其它文章</h2>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.pyper.cn/posts/python/2017/08/07/" rel="bookmark"
+                           title="打开 Pelican配置文件详解(二)">Pelican配置文件详解(二)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-08-07T16:20:00+08:00">
                 发布于: 2017-08-07 16:20
@@ -34,273 +68,10 @@
         </address>
 <p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
 <p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> </p>
-</footer><!-- /.post-info --><h1>Pelincan 配置变量</h1>
-<p>鉴于文档内容超长，将其分2次发布。</p>
-<p><strong>以下列举的配置变量其值为其默认值，即当没有在配置文件中设置该变量时，其所取值。</strong></p>
-<h2>时间和日期 配置变量</h2>
-<h4>TIMEZONE</h4>
-<blockquote>
-<p>时区设置。可用的时区请查看：<a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones">世界时区</a></p>
-</blockquote>
-<h4>DEFAULT_DATE = None</h4>
-<blockquote>
-<p>默认日期。如果设置为'fs'，pelican将尝试使用文档的创建日期。</p>
-</blockquote>
-<h4>DEFAULT_DATE_FORMAT = '%a %d %B %Y'</h4>
-<blockquote>
-<p>默认日期格式</p>
-</blockquote>
-<h4>DATE_FORMATS = { }</h4>
-<blockquote>
-<p>指定日期格式。注意这里是一个字典，你可以为不同语言设置不同的日期格式。可参考：<a href="http://docs.python.org/library/datetime.html#strftime-strptime-behavior">Python日期文档</a>，如果你的网站使用了多语种，请详细查看。</p>
-</blockquote>
-<h4>LOCALE</h4>
-<blockquote>
-<p>设置可用的本地化元组，示例：</p>
-<blockquote>
-<p>LOCALE = ('usa', 'jpn',      # On Windows<br>
-             'en_US', 'ja_JP'   # On Unix/Linux
-   )</p>
-</blockquote>
-</blockquote>
-<h2>模版 配置变量</h2>
-<h4>TEMPLATE_PAGES = None</h4>
-<blockquote>
-<p>自定义模版。可以为特定的源文档，指定一个模版。示例：</p>
-<blockquote>
-<p>TEMPLATE_PAGES = {'src/books.html': 'dest/books.html',
-                     'src/resume.html': 'dest/resume.html',
-                     'src/contact.html': 'dest/contact.html'}</p>
-</blockquote>
-</blockquote>
-<h4>DIRECT_TEMPLATES = ['index', 'categories', 'authors', 'archives']</h4>
-<blockquote>
-<p>指定使用那些索引模版。这将为分类和标签等自动建立索引页面。</p>
-</blockquote>
-<h4>PAGINATED_DIRECT_TEMPLATES = ['index']</h4>
-<blockquote>
-<p>指定那些位置需要分页。默认只是首页有分页，通常我们需要分类也能够分页。</p>
-</blockquote>
-<h4>EXTRA_TEMPLATES_PATHS = [ ]</h4>
-<blockquote>
-<p>自定义模版的路径。</p>
-</blockquote>
-<h2>元数据 配置变量</h2>
-<h4>AUTHOR</h4>
-<blockquote>
-<p>默认作者</p>
-</blockquote>
-<h4>DEFAULT_METADATA = { }</h4>
-<blockquote>
-<p>为元数据设置默认值</p>
-</blockquote>
-<h4>FILENAME_METADATA =<code>'(?P&lt;date&gt;d{4}-d{2}-d{2}).*'</code></h4>
-<blockquote>
-<p>提取匹配的元数据信息</p>
-</blockquote>
-<h4>PATH_METADATA = ' '</h4>
-<blockquote>
-<p>路径元数据信息</p>
-</blockquote>
-<h4>EXTRA_PATH_METADATA = { }</h4>
-<blockquote>
-<p>额外的路径元数据信息</p>
-</blockquote>
-<h2>信息订阅 配置变量</h2>
-<p>Pelican 默认使用Atom格式的订阅信息，如果你喜欢也可以使用RSS 格式订阅信息。<br>
-并且默认是生成分类文章的订阅信息，而不对标签分类进行处理。</p>
-<h4>FEED_DOMAIN = None, i.e. base URL is "/"</h4>
-<blockquote>
-<p>订阅信息的URL，默认为‘/’起点。</p>
-</blockquote>
-<h4>FEED_ATOM = None, i.e. no Atom feed</h4>
-<blockquote>
-<p>Atom订阅的URL</p>
-</blockquote>
-<h4>FEED_RSS = None, i.e. no RSS</h4>
-<blockquote>
-<p>RSS订阅的URL</p>
-</blockquote>
-<h4>FEED_ALL_ATOM = 'feeds/all.atom.xml'</h4>
-<blockquote>
-<p>全部文章的Atom订阅地址</p>
-</blockquote>
-<h4>FEED_ALL_ATOM = 'feeds/all.atom.xml'</h4>
-<blockquote>
-<p>全部文章的RSS订阅地址</p>
-</blockquote>
-<h4>CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'</h4>
-<blockquote>
-<p>Atom分类订阅</p>
-</blockquote>
-<h4>CATEGORY_FEED_RSS = None, i.e. no RSS</h4>
-<blockquote>
-<p>RSS分类订阅</p>
-</blockquote>
-<h4>AUTHOR_FEED_ATOM = 'feeds/%s.atom.xml'</h4>
-<blockquote>
-<p>Atom作者订阅</p>
-</blockquote>
-<h4>AUTHOR_FEED_RSS = 'feeds/%s.rss.xml'</h4>
-<blockquote>
-<p>RSS作者订阅</p>
-</blockquote>
-<h4>TAG_FEED_ATOM = None, i.e. no tag feed</h4>
-<blockquote>
-<p>Atom标签订阅</p>
-</blockquote>
-<h4>TAG_FEED_RSS = None, i.e. no RSS tag feed</h4>
-<blockquote>
-<p>RSS标签订阅</p>
-</blockquote>
-<h4>FEED_MAX_ITEMS</h4>
-<blockquote>
-<p>订阅条目的最大值</p>
-</blockquote>
-<h4>RSS_FEED_SUMMARY_ONLY = True</h4>
-<blockquote>
-<p>RSS订阅之包含摘要内容</p>
-</blockquote>
-<h2>分页 配置变量</h2>
-<p>Pelican 默认在首页显示所有文章，对文章数量不多的博客来说没有问题，但如果你的博客有上千篇文章，这会是个很不好的体验。</p>
-<h4>DEFAULT_ORPHANS = 0</h4>
-<blockquote>
-<p>默认尾页文章数量。为0表示，不指定最小数量。</p>
-</blockquote>
-<h4>DEFAULT_PAGINATION = False</h4>
-<blockquote>
-<p>每页文章数量。直接指定数值，为False表示不分页。</p>
-</blockquote>
-<h4>PAGINATION_PATTERNS</h4>
-<blockquote>
-<p>分页模式。示例：</p>
-<blockquote>
-<p>PAGINATION_PATTERNS = (
-       (1, '{base_name}/', '{base_name}/index.html'),
-       (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
-   )</p>
-</blockquote>
-</blockquote>
-<h2>多语种 配置变量</h2>
-<h4>DEFAULT_LANG = 'en'</h4>
-<blockquote>
-<p>默认语言</p>
-</blockquote>
-<h4>TRANSLATION_FEED_ATOM = 'feeds/all-%s.atom.xml'</h4>
-<blockquote>
-<p>Atom订阅语言</p>
-</blockquote>
-<h4>TRANSLATION_FEED_RSS = None, i.e. no RSS</h4>
-<blockquote>
-<p>RSS订阅语言</p>
-</blockquote>
-<h2>内容次序 配置变量</h2>
-<h4>NEWEST_FIRST_ARCHIVES = True</h4>
-<blockquote>
-<p>归档排序。默认最新归档在前。</p>
-</blockquote>
-<h4>REVERSE_CATEGORY_ORDER = False</h4>
-<blockquote>
-<p>分类文章排序反转。默认按字母顺序排列。</p>
-</blockquote>
-<h4>ARTICLE_ORDER_BY = 'reversed-date'</h4>
-<blockquote>
-<p>文章排序方式，默认日期反序</p>
-</blockquote>
-<h4>PAGE_ORDER_BY = 'basename'</h4>
-<blockquote>
-<p>页面排序方式。</p>
-</blockquote>
-<h2>主题 配置变量</h2>
-<h4>THEME</h4>
-<blockquote>
-<p>使用的主题名称。示例：</p>
-<blockquote>
-<p># 使用内置主题
-   THEME = "notmyidea"
-   # 指定自己安装的主题
-   THEME = "chunk"
-   # 指定一个自定义主题
-   THEME = "themes/mycustomtheme"
-   # 使用绝对路径指定一个主题
-   THEME = "/home/myuser/projects/mysite/themes/mycustomtheme"</p>
-</blockquote>
-</blockquote>
-<h4>THEME_STATIC_DIR = 'theme'</h4>
-<blockquote>
-<p>主题目录名称</p>
-</blockquote>
-<h4>THEME_STATIC_PATHS = ['static']</h4>
-<blockquote>
-<p>主题使用的静态文件的目录名称</p>
-</blockquote>
-<h4>CSS_FILE = 'main.css'</h4>
-<blockquote>
-<p>自定义样式文件。默认为 main.css</p>
-</blockquote>
-<h4>SITESUBTITLE</h4>
-<blockquote>
-<p>站点副标题</p>
-</blockquote>
-<h4>DISQUS_SITENAME</h4>
-<blockquote>
-<p>Disqus帐号</p>
-</blockquote>
-<h4>GITHUB_URL</h4>
-<blockquote>
-<p>github地址</p>
-</blockquote>
-<h4>GOOGLE_ANALYTICS</h4>
-<blockquote>
-<p>谷歌统计</p>
-</blockquote>
-<h4>GA_COOKIE_DOMAIN</h4>
-<blockquote>
-<p>谷歌统计cookie使用的名称</p>
-</blockquote>
-<h4>GOSQUARED_SITENAME</h4>
-<blockquote></blockquote>
-<h4>MENUITEMS</h4>
-<blockquote>
-<p>自定义菜单</p>
-</blockquote>
-<h4>PIWIK_URL</h4>
-<blockquote>
-<p>Piwik服务器URL</p>
-</blockquote>
-<h4>PIWIK_SSL_URL</h4>
-<blockquote>
-<p>PiwikSSL URL</p>
-</blockquote>
-<h4>PIWIK_SITE_ID</h4>
-<blockquote>
-<p>Piwik站点帐号</p>
-</blockquote>
-<h4>LINKS</h4>
-<blockquote>
-<p>定义一个链接列表，列表元素为(Title, URL)形式的元组。</p>
-</blockquote>
-<h4>SOCIAL</h4>
-<blockquote>
-<p>同上形式的链接列表。通常两者用来将链接分类。</p>
-</blockquote>
-<h4>TWITTER_USERNAME</h4>
-<blockquote>
-<p>推特帐号</p>
-</blockquote>
-<h4>LINKS_WIDGET_NAME</h4>
-<blockquote>
-<p>LINKS链接列表变量的名称</p>
-</blockquote>
-<h4>SOCIAL_WIDGET_NAME</h4>
-<blockquote>
-<p>SOCIAL链接列表变量的名称</p>
-</blockquote>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h2>其它文章</h2>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Pelican的工作机制和配置文件详解</p>
+                <a class="readmore" href="http://www.pyper.cn/posts/python/2017/08/07/">详细内容...</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -321,28 +92,6 @@
 <p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> </p>
 </footer><!-- /.post-info -->                <p>Pelican的工作机制和配置文件详解</p>
                 <a class="readmore" href="http://www.pyper.cn/posts/python/2017/08/06/">详细内容...</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.pyper.cn/posts/python/2017/08/03/" rel="bookmark"
-                           title="打开 GitHub上建博客">GitHub上建博客</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-08-03T10:20:00+08:00">
-                发布于: 2017-08-03 10:20
-        </abbr>
-
-        <address class="vcard author">
-                作者:                         <a class="url fn" href="http://www.pyper.cn/archives/author/iflat.html">iflat</a>
-        </address>
-<p>分类: <a href="http://www.pyper.cn/archives/category/python.html">Python</a></p>
-<p>tags: <a href="http://www.pyper.cn/archives/tag/pelican.html">pelican</a> <a href="http://www.pyper.cn/archives/tag/github.html">github</a> </p>
-</footer><!-- /.post-info -->                <p>利用Github Pages发布博客的操作步骤</p>
-                <a class="readmore" href="http://www.pyper.cn/posts/python/2017/08/03/">详细内容...</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
@@ -375,7 +124,7 @@
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
                 感谢<a href="http://getpelican.com/">Pelican</a>生成器, 它是一个有趣的<a href="http://python.org">Python</a>项目, 
-                主题来自:<a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> 汉化: iflat 
+                主题来自:<a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> 
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>

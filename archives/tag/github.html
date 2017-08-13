@@ -16,6 +16,7 @@
                 <nav><ul>
                     <li><a href="/">首页</a></li>
                     <li><a href="http://www.pyper.cn/archives/category/linux.html">Linux</a></li>
+                    <li><a href="http://www.pyper.cn/archives/category/program.html">Program</a></li>
                     <li><a href="http://www.pyper.cn/archives/category/python.html">Python</a></li>
                     <li><a href="/pages/about-me/index.html">关于</a></li>
                 </ul></nav>
@@ -43,7 +44,7 @@
 <p>其中 xxxx 是你的 GitHub 帐号，yyyy 为新建的仓库的名称。在仓库里添加一个 index.html ，试试看能不能访问到。</p>
 <p>如果你想将已有的域名指向这个博客，必须先在仓库设置中将 Custom domain 项设置为你的域名，比如 www.xxxx.com ，并保存。然后去你的域名注册商那里将域名解析添加一个CNAME解析，来指向 xxxx.github.io ，其中 xxxx 还是你的 GitHub 帐号，注意这里传递给了主机 github.io，而不是 github.com ，GitHub 使用了专门的主机来完成解析工作。一般这个CNAME解析需要添加2项，一个 www 记录，一个@记录。设置完成后，大约过那么几分钟，服务器就会把你的设置结果推送出去，这时就可以使用自己的域名访问博客了。</p>
 <p>然后就该 Pelican 上场了，它的老家在: <a href="https://blog.getpelican.com/">https://blog.getpelican.com/</a> 。<br>
-  它的网站上有详细的安装和使用说明。其实安装很简单：</p>
+它的网站上有详细的安装和使用说明。其实安装很简单：</p>
 <div class="highlight"><pre><span></span>pip install pelican
 </pre></div>
 
@@ -60,7 +61,7 @@
 
 <p>这个东西会完成初始化博客的工作，同时执行过程中它会问你很多问题，比如：博客名称是什么？你的名字是什么？准备把博客放哪儿？域名是什么？等等。</p>
 <p>问完之后，你可以 <code>ls</code> 查看一下当前目录里边多出了那些东西？
-  通常内容是这样的：</p>
+通常内容是这样的：</p>
 <div class="highlight"><pre><span></span>myblog/
 ├── content
 │   └── (pages)
@@ -122,7 +123,7 @@
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
                 感谢<a href="http://getpelican.com/">Pelican</a>生成器, 它是一个有趣的<a href="http://python.org">Python</a>项目, 
-                主题来自:<a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> 汉化: iflat 
+                主题来自:<a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> 
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
 </body>
