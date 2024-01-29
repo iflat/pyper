@@ -1,2 +1,2 @@
-# pyper.cn
-A simple python coder's blog.
+# xinting.me
+A simple coder's blog.
